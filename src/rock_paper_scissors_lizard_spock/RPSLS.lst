@@ -1,0 +1,2676 @@
+     Assembly listing for: RPSLS.mas
+                Assembled: Mon Dec 07 01:19:23 CST 2020
+
+         |                  ORG 100                    
+100 F711 |  loop            PRINT title               / printing title, and loop for repeated play
+101 F89D |                  PRINT player1             / Next 2 lines prompt player 1 for input
+102 F737 |                  PRINT inputPromptText      
+103 5000 |                  INPUT                     / Next 2 lines take & store player1's choice
+104 21AB |                  STORE p1Choice             
+105 F8A5 |                  PRINT player2              
+106 F737 |                  PRINT inputPromptText     / Next 2 lines prompt player 2 for input
+107 5000 |                  INPUT                      
+108 21AC |                  STORE p2Choice            / Next 2 lines take & store player2's choice
+         |                                            
+109 11B0 |                  LOAD zero                  
+10A 21AF |                  STORE p1Win               / clearing previous game data from p1Win
+         |                                            
+         |                                            	/ temp hard coded variables for testing
+         |                                            	/ LOAD one
+         |                                            	/ store p1Choice
+         |                                            	/ LOAD five
+         |                                            	/ store p2Choice
+         |                                            
+         |                                            
+         |                                            / conditionals to check if user is:
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+10B 11AB |  if1             LOAD p1Choice              
+10C 41B1 |                  SUBT one                   
+10D 8400 |                  SKIPCOND 400              / if choice is 1
+10E 9116 |                  JUMP elseif1               
+10F F89D |  then1           PRINT player1              
+110 F7F3 |                  PRINT chose                
+111 F85A |                  PRINT newLine              
+112 F85E |                  PRINT rock                 
+113 F7FA |                  PRINT and                  
+114 F85A |                  PRINT newLine              
+115 91BD |                  JUMP rockCheck            / then go to rock check
+116 11AB |  elseif1         LOAD p1Choice             / other wise,
+117 41B2 |                  SUBT two                   
+118 8400 |                  SKIPCOND 400              /if choice is 2
+119 9121 |                  JUMP elseif2               
+11A F89D |  then2           PRINT player1              
+11B F7F3 |                  PRINT chose                
+11C F85A |                  PRINT newLine              
+11D F863 |                  PRINT paper                
+11E F7FA |                  PRINT and                  
+11F F85A |                  PRINT newLine              
+120 9239 |                  JUMP paperCheck           / then go to paper check
+121 11AB |  elseif2         LOAD p1Choice             / otherwise,
+122 41B3 |                  SUBT three                 
+123 8400 |                  SKIPCOND 400              /if choice is 3
+124 912C |                  JUMP elseif3               
+125 F89D |  then3           PRINT player1              
+126 F7F3 |                  PRINT chose                
+127 F85A |                  PRINT newLine              
+128 F869 |                  PRINT scissors             
+129 F7FA |                  PRINT and                  
+12A F85A |                  PRINT newLine              
+12B 92B5 |                  JUMP scissorsCheck        / then go to scissors check
+12C 11AB |  elseif3         LOAD p1Choice             / otherwise,
+12D 41B4 |                  SUBT four                  
+12E 8400 |                  SKIPCOND 400              /if choice is 4
+12F 9137 |                  JUMP elseif4               
+130 F89D |  then4           PRINT player1              
+131 F7F3 |                  PRINT chose                
+132 F85A |                  PRINT newLine              
+133 F87D |                  PRINT fire                 
+134 F7FA |                  PRINT and                  
+135 F85A |                  PRINT newLine              
+136 9331 |                  JUMP fireCheck            / then go to fire check
+137 11AB |  elseif4         LOAD p1Choice              
+138 41B5 |                  SUBT five                  
+139 8400 |                  SKIPCOND 400               
+13A 9142 |                  JUMP elseif5               
+13B F89D |  then5           PRINT player1              
+13C F7F3 |                  PRINT chose                
+13D F85A |                  PRINT newLine              
+13E F877 |                  PRINT human                
+13F F7FA |                  PRINT and                  
+140 F85A |                  PRINT newLine              
+141 93AD |                  JUMP humanCheck           / then go to human check
+142 11AB |  elseif5         LOAD p1Choice              
+143 41B6 |                  SUBT six                   
+144 8400 |                  SKIPCOND 400               
+145 914D |                  JUMP elseif6               
+146 F89D |  then6           PRINT player1              
+147 F7F3 |                  PRINT chose                
+148 F85A |                  PRINT newLine              
+149 F872 |                  PRINT wolf                 
+14A F7FA |                  PRINT and                  
+14B F85A |                  PRINT newLine              
+14C 9429 |                  JUMP wolfCheck            / then go to wolf check
+14D 11AB |  elseif6         LOAD p1Choice              
+14E 41B7 |                  SUBT seven                 
+14F 8400 |                  SKIPCOND 400               
+150 9158 |                  JUMP elseif7               
+151 F89D |  then7           PRINT player1              
+152 F7F3 |                  PRINT chose                
+153 F85A |                  PRINT newLine              
+154 F882 |                  PRINT sponge               
+155 F7FA |                  PRINT and                  
+156 F85A |                  PRINT newLine              
+157 94A5 |                  JUMP spongeCheck          / then go to sponge check
+158 11AB |  elseif7         LOAD p1Choice              
+159 41B8 |                  SUBT eight                 
+15A 8400 |                  SKIPCOND 400               
+15B 9163 |                  JUMP elseif8               
+15C F89D |  then8           PRINT player1              
+15D F7F3 |                  PRINT chose                
+15E F85A |                  PRINT newLine              
+15F F889 |                  PRINT air                  
+160 F7FA |                  PRINT and                  
+161 F85A |                  PRINT newLine              
+162 9521 |                  JUMP airCheck             / then go to air check
+163 11AB |  elseif8         LOAD p1Choice              
+164 41B9 |                  SUBT nine                  
+165 8400 |                  SKIPCOND 400               
+166 916E |                  JUMP elseif9               
+167 F89D |  then9           PRINT player1              
+168 F7F3 |                  PRINT chose                
+169 F85A |                  PRINT newLine              
+16A F88D |                  PRINT water                
+16B F7FA |                  PRINT and                  
+16C F85A |                  PRINT newLine              
+16D 959D |                  JUMP waterCheck           / then go to water check
+16E 11AB |  elseif9         LOAD p1Choice              
+16F 41BA |                  SUBT ten                   
+170 8400 |                  SKIPCOND 400               
+171 9179 |                  JUMP elseif10              
+172 F89D |  then10          PRINT player1              
+173 F7F3 |                  PRINT chose                
+174 F85A |                  PRINT newLine              
+175 F893 |                  PRINT devil                
+176 F7FA |                  PRINT and                  
+177 F85A |                  PRINT newLine              
+178 9619 |                  JUMP devilCheck           / then go to devil check
+179 F89D |  elseif10        PRINT player1              
+17A F7F3 |                  PRINT chose                
+17B F85A |                  PRINT newLine              
+17C F899 |                  PRINT gun                  
+17D F7FA |                  PRINT and                  
+17E F85A |                  PRINT newLine              
+17F 9695 |                  JUMP gunCheck             / then go to gun check
+         |                                            
+         |                                            
+         |                                            
+         |                                            	
+180 F85A |  resume          PRINT newLine              
+181 11AF |                  LOAD p1Win                 
+182 8800 |                  SKIPCOND 800               
+183 9189 |                  JUMP elseifFI1             
+184 F89D |  thenFI          PRINT player1             / if player 1 won
+185 11AD |                  LOAD p1Score               
+186 31B1 |                  ADD one                    
+187 21AD |                  STORE p1Score              
+188 9192 |                  JUMP endifFI               
+189 8400 |  elseifFI1       SKIPCOND 400               
+18A 9190 |                  JUMP elseifFI2             
+18B F8A5 |                  PRINT player2             / if player 2 won
+18C 11AE |                  LOAD p2Score               
+18D 31B1 |                  ADD one                    
+18E 21AE |                  STORE p2Score              
+18F 9192 |                  JUMP endifFI               
+190 F84F |  elseifFI2       PRINT tie                  
+191 9193 |                  JUMP endiftie             / if tie got to end
+192 F848 |  endifFI         PRINT wins                 
+193 F85A |  endiftie        PRINT newLine              
+194 F85A |                  PRINT newLine              
+195 F7D7 |                  PRINT playAgain           / ask if players want to play again
+196 F85A |                  PRINT newLine              
+197 5000 |                  INPUT                      
+198 8400 |                  SKIPCOND 400              / if players do, loop through again. if not, end program
+199 9100 |                  JUMP loop                  
+         |                                            
+         |                                            
+19A F85A |                  PRINT newLine              
+19B F89D |                  PRINT player1              
+19C F85C |                  PRINT space               / printing display text for p1's score
+19D F854 |                  PRINT score                
+19E 11AD |                  LOAD p1Score               
+19F 31BC |                  ADD shift                 / shifting p1's score to their score's ASCII value
+1A0 6000 |                  OUTPUT                     
+1A1 F85A |                  PRINT newLine              
+1A2 F8A5 |                  PRINT player2              
+1A3 F85C |                  PRINT space               / printing display text for p2's score
+1A4 F854 |                  PRINT score                
+1A5 11AE |                  LOAD p2Score               
+1A6 31BC |                  ADD shift                 / shifting p2's score to their score's ASCII value
+1A7 6000 |                  OUTPUT                     
+1A8 F85A |                  PRINT newLine              
+1A9 F85A |                  PRINT newLine              
+1AA 7000 |                  HALT                       
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+1AB 0000 |  p1Choice        DEC 000                   / for holding player 1's choice
+1AC 0000 |  p2Choice        DEC 000                   / for holding player 2's choice
+         |                                            
+1AD 0000 |  p1Score         DEC 000                   / for holding player 1's score
+1AE 0000 |  p2Score         DEC 000                   / for holding player 2's score
+         |                                            
+1AF 0000 |  p1Win           DEC 000                   / status of win or loss for player 1
+         |                                            
+1B0 0000 |  zero            DEC 000                    
+1B1 0001 |  one             DEC 001                    
+1B2 0002 |  two             DEC 002                    
+1B3 0003 |  three           DEC 003                    
+1B4 0004 |  four            DEC 004                    
+1B5 0005 |  five            DEC 005                    
+1B6 0006 |  six             DEC 006                    
+1B7 0007 |  seven           DEC 007                    
+1B8 0008 |  eight           DEC 008                    
+1B9 0009 |  nine            DEC 009                    
+1BA 000A |  ten             DEC 010                    
+1BB 000B |  eleven          DEC 011                    
+1BC 0030 |  shift           DEC 048                   / value to shift score's to their score in ASCII
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========== ROCK CHECK =============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+1BD 11AC |  rockCheck       LOAD p2Choice              
+1BE 41B2 |                  SUBT two                   
+1BF 8400 |                  SKIPCOND 400              / checking if paper
+1C0 91C7 |                  JUMP elseifR1              
+1C1 F8A5 |  thenR1          PRINT player2              
+1C2 F7F3 |                  PRINT chose                
+1C3 F85A |                  PRINT newLine             / player1 chose rock player2 chose paper
+1C4 F863 |                  PRINT paper                
+1C5 F85A |                  PRINT newLine              
+1C6 9238 |                  JUMP endifR               / if paper, do not mark counter & jump to end
+1C7 11AC |  elseifR1        LOAD p2Choice              
+1C8 41B3 |                  SUBT three                 
+1C9 8400 |                  SKIPCOND 400              / checking if scissors
+1CA 91D4 |                  JUMP elseifR2              
+1CB F8A5 |  thenR2          PRINT player2              
+1CC F7F3 |                  PRINT chose                
+1CD F85A |                  PRINT newLine              
+1CE F869 |                  PRINT scissors            / player1 chose rock player2 chose scissors
+1CF F85A |                  PRINT newLine              
+1D0 11AF |                  LOAD p1Win                 
+1D1 31B1 |                  ADD one                    
+1D2 21AF |                  STORE p1Win               / if scissors, mark win counter & jump to end
+1D3 9238 |                  JUMP endifR                
+1D4 11AC |  elseifR2        LOAD p2Choice              
+1D5 41B4 |                  SUBT four                  
+1D6 8400 |                  SKIPCOND 400              / CHECKING FIRE
+1D7 91E1 |                  JUMP elseifR3              
+1D8 F8A5 |  thenR3          PRINT player2              
+1D9 F7F3 |                  PRINT chose                
+1DA F85A |                  PRINT newLine             / player1 chose rock player2 chose fire
+1DB F87D |                  PRINT fire                 
+1DC F85A |                  PRINT newLine              
+1DD 11AF |                  LOAD p1Win                 
+1DE 31B1 |                  ADD one                    
+1DF 21AF |                  STORE p1Win               / FIRE -  win & jump to end
+1E0 9238 |                  JUMP endifR                
+1E1 11AC |  elseifR3        LOAD p2Choice              
+1E2 41B5 |                  SUBT five                  
+1E3 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+1E4 91EE |                  JUMP elseifR4              
+1E5 F8A5 |  thenR4          PRINT player2              
+1E6 F7F3 |                  PRINT chose               / player1 chose rock player2 chose human
+1E7 F85A |                  PRINT newLine              
+1E8 F877 |                  PRINT human                
+1E9 F85A |                  PRINT newLine              
+1EA 11AF |                  LOAD p1Win                 
+1EB 31B1 |                  ADD one                    
+1EC 21AF |                  STORE p1Win               / HUMAN -  win & jump to end
+1ED 9238 |                  JUMP endifR                
+1EE 11AC |  elseifR4        LOAD p2Choice              
+1EF 41B6 |                  SUBT six                   
+1F0 8400 |                  SKIPCOND 400              / CHECKING WOLF
+1F1 91FB |                  JUMP elseifR5              
+1F2 F8A5 |  thenR5          PRINT player2              
+1F3 F7F3 |                  PRINT chose               / player1 chose rock player2 chose wolf
+1F4 F85A |                  PRINT newLine              
+1F5 F872 |                  PRINT wolf                 
+1F6 F85A |                  PRINT newLine              
+1F7 11AF |                  LOAD p1Win                 
+1F8 31B1 |                  ADD one                    
+1F9 21AF |                  STORE p1Win               / HUMAN -  win & jump to end
+1FA 9238 |                  JUMP endifR                
+1FB 11AC |  elseifR5        LOAD p2Choice              
+1FC 41B7 |                  SUBT seven                 
+1FD 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+1FE 9208 |                  JUMP elseifR6              
+1FF F8A5 |  thenR6          PRINT player2              
+200 F7F3 |                  PRINT chose               / player1 chose rock player2 chose SPONGE
+201 F85A |                  PRINT newLine              
+202 F882 |                  PRINT sponge               
+203 F85A |                  PRINT newLine              
+204 11AF |                  LOAD p1Win                 
+205 31B1 |                  ADD one                    
+206 21AF |                  STORE p1Win               / SPONGE -  win & jump to end
+207 9238 |                  JUMP endifR                
+208 11AC |  elseifR6        LOAD p2Choice              
+209 41B8 |                  SUBT eight                 
+20A 8400 |                  SKIPCOND 400              / CHECKING AIR
+20B 9212 |                  JUMP elseifR7              
+20C F8A5 |  thenR7          PRINT player2              
+20D F7F3 |                  PRINT chose               / player1 chose rock player2 chose AIR
+20E F85A |                  PRINT newLine              
+20F F889 |                  PRINT air                  
+210 F85A |                  PRINT newLine              
+211 9238 |                  JUMP endifR               / AIR -  lose & jump to end
+212 11AC |  elseifR7        LOAD p2Choice              
+213 41B9 |                  SUBT nine                  
+214 8400 |                  SKIPCOND 400              / CHECKING WATER
+215 921C |                  JUMP elseifR8              
+216 F8A5 |  thenR8          PRINT player2              
+217 F7F3 |                  PRINT chose               / player1 chose rock player2 chose WATER
+218 F85A |                  PRINT newLine              
+219 F88D |                  PRINT water                
+21A F85A |                  PRINT newLine              
+21B 9238 |                  JUMP endifR               / WATER -  lose & jump to end
+21C 11AC |  elseifR8        LOAD p2Choice              
+21D 41BA |                  SUBT ten                   
+21E 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+21F 9226 |                  JUMP elseifR9              
+220 F8A5 |  thenR9          PRINT player2              
+221 F7F3 |                  PRINT chose               / player1 chose rock player2 chose DEVIL
+222 F85A |                  PRINT newLine              
+223 F893 |                  PRINT devil                
+224 F85A |                  PRINT newLine              
+225 9238 |                  JUMP endifR               / DEVIL -  lose & jump to end
+226 11AC |  elseifR9        LOAD p2Choice              
+227 41BB |                  SUBT eleven                
+228 8400 |                  SKIPCOND 400              / CHECKING GUN
+229 9230 |                  JUMP elseifRT              
+22A F8A5 |  thenR10         PRINT player2              
+22B F7F3 |                  PRINT chose               / player1 chose rock player2 chose GUN
+22C F85A |                  PRINT newLine              
+22D F899 |                  PRINT gun                  
+22E F85A |                  PRINT newLine              
+22F 9238 |                  JUMP endifR               / GUN -  lose & jump to end
+230 F8A5 |  elseifRT        PRINT player2             / ELSE - ROCK CHOSEN
+231 F7F3 |                  PRINT chose               / player1 chose rock player2 chose rock
+232 F85A |                  PRINT newLine              
+233 F85E |                  PRINT rock                 
+234 F85A |                  PRINT newLine              
+235 11AF |                  LOAD p1Win                 
+236 41B1 |                  SUBT one                   
+237 21AF |                  STORE p1Win               / tie 
+238 9180 |  endifR          JUMP resume                
+         |                                            
+         |                                            / =============== PAPER CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+239 11AC |  paperCheck      LOAD p2Choice              
+23A 41B1 |                  SUBT one                   
+23B 8400 |                  SKIPCOND 400              / checking if rock
+23C 9246 |                  JUMP elseifP1              
+23D F8A5 |  thenP1          PRINT player2              
+23E F7F3 |                  PRINT chose                
+23F F85A |                  PRINT newLine             / player1 chose paper player2 chose rock
+240 F85E |                  PRINT rock                 
+241 F85A |                  PRINT newLine              
+242 11AF |                  LOAD p1Win                 
+243 31B1 |                  ADD one                    
+244 21AF |                  STORE p1Win               / ROCK -  win & jump to end
+245 92B4 |                  JUMP endifP                
+246 11AC |  elseifP1        LOAD p2Choice              
+247 41B3 |                  SUBT three                 
+248 8400 |                  SKIPCOND 400              / checking if scissors
+249 9250 |                  JUMP elseifP2              
+24A F8A5 |  thenP2          PRINT player2              
+24B F7F3 |                  PRINT chose                
+24C F85A |                  PRINT newLine              
+24D F869 |                  PRINT scissors            / player1 chose paper player2 chose scissors
+24E F85A |                  PRINT newLine              
+24F 92B4 |                  JUMP endifP               / SCISSORS - lose & jump to end
+250 11AC |  elseifP2        LOAD p2Choice              
+251 41B4 |                  SUBT four                  
+252 8400 |                  SKIPCOND 400              / CHECKING FIRE
+253 925A |                  JUMP elseifP3              
+254 F8A5 |  thenP3          PRINT player2              
+255 F7F3 |                  PRINT chose                
+256 F85A |                  PRINT newLine             / player1 chose paper player2 chose fire
+257 F87D |                  PRINT fire                 
+258 F85A |                  PRINT newLine              
+259 92B4 |                  JUMP endifP               / FIRE -  lose & jump to end
+25A 11AC |  elseifP3        LOAD p2Choice              
+25B 41B5 |                  SUBT five                  
+25C 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+25D 9264 |                  JUMP elseifP4              
+25E F8A5 |  thenP4          PRINT player2              
+25F F7F3 |                  PRINT chose               / player1 chose paper player2 chose human
+260 F85A |                  PRINT newLine              
+261 F877 |                  PRINT human                
+262 F85A |                  PRINT newLine              
+263 92B4 |                  JUMP endifP               / HUMAN -  lose & jump to end
+264 11AC |  elseifP4        LOAD p2Choice              
+265 41B6 |                  SUBT six                   
+266 8400 |                  SKIPCOND 400              / CHECKING WOLF
+267 926E |                  JUMP elseifP5              
+268 F8A5 |  thenP5          PRINT player2              
+269 F7F3 |                  PRINT chose               / player1 chose paper player2 chose wolf
+26A F85A |                  PRINT newLine              
+26B F872 |                  PRINT wolf                 
+26C F85A |                  PRINT newLine              
+26D 92B4 |                  JUMP endifP               / WOLF -  lose & jump to end
+26E 11AC |  elseifP5        LOAD p2Choice              
+26F 41B7 |                  SUBT seven                 
+270 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+271 9278 |                  JUMP elseifP6              
+272 F8A5 |  thenP6          PRINT player2              
+273 F7F3 |                  PRINT chose               / player1 chose paper player2 chose SPONGE
+274 F85A |                  PRINT newLine              
+275 F882 |                  PRINT sponge               
+276 F85A |                  PRINT newLine              
+277 92B4 |                  JUMP endifP               / SPONGE -  lose & jump to end
+278 11AC |  elseifP6        LOAD p2Choice              
+279 41B8 |                  SUBT eight                 
+27A 8400 |                  SKIPCOND 400              / CHECKING AIR
+27B 9285 |                  JUMP elseifP7              
+27C F8A5 |  thenP7          PRINT player2              
+27D F7F3 |                  PRINT chose               / player1 chose paper player2 chose AIR
+27E F85A |                  PRINT newLine              
+27F F889 |                  PRINT air                  
+280 F85A |                  PRINT newLine              
+281 11AF |                  LOAD p1Win                 
+282 31B1 |                  ADD one                    
+283 21AF |                  STORE p1Win               / AIR -  win & jump to end
+284 92B4 |                  JUMP endifP                
+285 11AC |  elseifP7        LOAD p2Choice              
+286 41B9 |                  SUBT nine                  
+287 8400 |                  SKIPCOND 400              / CHECKING WATER
+288 9292 |                  JUMP elseifP8              
+289 F8A5 |  thenP8          PRINT player2              
+28A F7F3 |                  PRINT chose               / player1 chose paper player2 chose WATER
+28B F85A |                  PRINT newLine              
+28C F88D |                  PRINT water                
+28D F85A |                  PRINT newLine              
+28E 11AF |                  LOAD p1Win                 
+28F 31B1 |                  ADD one                    
+290 21AF |                  STORE p1Win               / WATER -  win & jump to end
+291 92B4 |                  JUMP endifP                
+292 11AC |  elseifP8        LOAD p2Choice              
+293 41BA |                  SUBT ten                   
+294 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+295 929F |                  JUMP elseifP9              
+296 F8A5 |  thenP9          PRINT player2              
+297 F7F3 |                  PRINT chose               / player1 chose paper player2 chose DEVIL
+298 F85A |                  PRINT newLine              
+299 F893 |                  PRINT devil                
+29A F85A |                  PRINT newLine              
+29B 11AF |                  LOAD p1Win                 
+29C 31B1 |                  ADD one                    
+29D 21AF |                  STORE p1Win               / DEVIL -  win & jump to end
+29E 92B4 |                  JUMP endifP                
+29F 11AC |  elseifP9        LOAD p2Choice              
+2A0 41BB |                  SUBT eleven                
+2A1 8400 |                  SKIPCOND 400              / CHECKING GUN
+2A2 92AC |                  JUMP elseifPT              
+2A3 F8A5 |  thenP10         PRINT player2              
+2A4 F7F3 |                  PRINT chose               / player1 chose paper player2 chose GUN
+2A5 F85A |                  PRINT newLine              
+2A6 F899 |                  PRINT gun                  
+2A7 F85A |                  PRINT newLine              
+2A8 11AF |                  LOAD p1Win                 
+2A9 31B1 |                  ADD one                    
+2AA 21AF |                  STORE p1Win               / GUN -  win & jump to end
+2AB 92B4 |                  JUMP endifP                
+2AC F8A5 |  elseifPT        PRINT player2             / ELSE - PAPER CHOSEN
+2AD F7F3 |                  PRINT chose               / player1 chose paper player2 chose rock
+2AE F85A |                  PRINT newLine              
+2AF F863 |                  PRINT paper                
+2B0 F85A |                  PRINT newLine              
+2B1 11AF |                  LOAD p1Win                 
+2B2 41B1 |                  SUBT one                   
+2B3 21AF |                  STORE p1Win               / tie 
+2B4 9180 |  endifP          JUMP resume                
+         |                                            
+         |                                            / =============== scissors CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+2B5 11AC |  scissorsCheck   LOAD p2Choice              
+2B6 41B1 |                  SUBT one                   
+2B7 8400 |                  SKIPCOND 400              / checking if rock
+2B8 92BF |                  JUMP elseifSC1             
+2B9 F8A5 |  thenSC1         PRINT player2              
+2BA F7F3 |                  PRINT chose                
+2BB F85A |                  PRINT newLine             / player1 chose paper player2 chose rock
+2BC F85E |                  PRINT rock                 
+2BD F85A |                  PRINT newLine              
+2BE 9330 |                  JUMP endifSC              / ROCK -  LOSE & jump to end
+2BF 11AC |  elseifSC1       LOAD p2Choice              
+2C0 41B2 |                  SUBT two                   
+2C1 8400 |                  SKIPCOND 400              / checking if paper
+2C2 92CC |                  JUMP elseifSC2             
+2C3 F8A5 |  thenSC2         PRINT player2              
+2C4 F7F3 |                  PRINT chose                
+2C5 F85A |                  PRINT newLine              
+2C6 F863 |                  PRINT paper               / player1 chose scissors player2 chose paper
+2C7 F85A |                  PRINT newLine              
+2C8 11AF |                  LOAD p1Win                 
+2C9 31B1 |                  ADD one                    
+2CA 21AF |                  STORE p1Win                
+2CB 9330 |                  JUMP endifSC              / SCISSORS - WIN & jump to end
+2CC 11AC |  elseifSC2       LOAD p2Choice              
+2CD 41B4 |                  SUBT four                  
+2CE 8400 |                  SKIPCOND 400              / CHECKING FIRE
+2CF 92D6 |                  JUMP elseifSC3             
+2D0 F8A5 |  thenSC3         PRINT player2              
+2D1 F7F3 |                  PRINT chose                
+2D2 F85A |                  PRINT newLine             / player1 chose scissors player2 chose fire
+2D3 F87D |                  PRINT fire                 
+2D4 F85A |                  PRINT newLine              
+2D5 9330 |                  JUMP endifSC              / FIRE -  lose & jump to end
+2D6 11AC |  elseifSC3       LOAD p2Choice              
+2D7 41B5 |                  SUBT five                  
+2D8 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+2D9 92E3 |                  JUMP elseifSC4             
+2DA F8A5 |  thenSC4         PRINT player2              
+2DB F7F3 |                  PRINT chose               / player1 chose scissors player2 chose human
+2DC F85A |                  PRINT newLine              
+2DD F877 |                  PRINT human                
+2DE F85A |                  PRINT newLine              
+2DF 11AF |                  LOAD p1Win                 
+2E0 31B1 |                  ADD one                    
+2E1 21AF |                  STORE p1Win                
+2E2 9330 |                  JUMP endifSC              / HUMAN -  win & jump to end
+2E3 11AC |  elseifSC4       LOAD p2Choice              
+2E4 41B6 |                  SUBT six                   
+2E5 8400 |                  SKIPCOND 400              / CHECKING WOLF
+2E6 92F0 |                  JUMP elseifSC5             
+2E7 F8A5 |  thenSC5         PRINT player2              
+2E8 F7F3 |                  PRINT chose               / player1 chose scissors player2 chose wolf
+2E9 F85A |                  PRINT newLine              
+2EA F872 |                  PRINT wolf                 
+2EB F85A |                  PRINT newLine              
+2EC 11AF |                  LOAD p1Win                 
+2ED 31B1 |                  ADD one                    
+2EE 21AF |                  STORE p1Win                
+2EF 9330 |                  JUMP endifSC              / WOLF -  win & jump to end
+2F0 11AC |  elseifSC5       LOAD p2Choice              
+2F1 41B7 |                  SUBT seven                 
+2F2 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+2F3 92FD |                  JUMP elseifSC6             
+2F4 F8A5 |  thenSC6         PRINT player2              
+2F5 F7F3 |                  PRINT chose               / player1 chose scissors player2 chose SPONGE
+2F6 F85A |                  PRINT newLine              
+2F7 F882 |                  PRINT sponge               
+2F8 F85A |                  PRINT newLine              
+2F9 11AF |                  LOAD p1Win                 
+2FA 31B1 |                  ADD one                    
+2FB 21AF |                  STORE p1Win                
+2FC 9330 |                  JUMP endifSC              / SPONGE -  win & jump to end
+2FD 11AC |  elseifSC6       LOAD p2Choice              
+2FE 41B8 |                  SUBT eight                 
+2FF 8400 |                  SKIPCOND 400              / CHECKING AIR
+300 930A |                  JUMP elseifSC7             
+301 F8A5 |  thenSC7         PRINT player2              
+302 F7F3 |                  PRINT chose               / player1 chose scissors player2 chose AIR
+303 F85A |                  PRINT newLine              
+304 F889 |                  PRINT air                  
+305 F85A |                  PRINT newLine              
+306 11AF |                  LOAD p1Win                 
+307 31B1 |                  ADD one                    
+308 21AF |                  STORE p1Win               / AIR -  win & jump to end
+309 9330 |                  JUMP endifSC               
+30A 11AC |  elseifSC7       LOAD p2Choice              
+30B 41B9 |                  SUBT nine                  
+30C 8400 |                  SKIPCOND 400              / CHECKING WATER
+30D 9314 |                  JUMP elseifSC8             
+30E F8A5 |  thenSC8         PRINT player2              
+30F F7F3 |                  PRINT chose               / player1 chose scissors player2 chose WATER
+310 F85A |                  PRINT newLine              
+311 F88D |                  PRINT water                
+312 F85A |                  PRINT newLine              
+313 9330 |                  JUMP endifSC              / WATER -  lose & jump to end
+314 11AC |  elseifSC8       LOAD p2Choice              
+315 41BA |                  SUBT ten                   
+316 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+317 931E |                  JUMP elseifSC9             
+318 F8A5 |  thenSC9         PRINT player2              
+319 F7F3 |                  PRINT chose               / player1 chose scissors player2 chose DEVIL
+31A F85A |                  PRINT newLine              
+31B F893 |                  PRINT devil                
+31C F85A |                  PRINT newLine              
+31D 9330 |                  JUMP endifSC              / DEVIL -  lose & jump to end
+31E 11AC |  elseifSC9       LOAD p2Choice              
+31F 41BB |                  SUBT eleven                
+320 8400 |                  SKIPCOND 400              / CHECKING GUN
+321 9328 |                  JUMP elseifSCT             
+322 F8A5 |  thenSC10        PRINT player2              
+323 F7F3 |                  PRINT chose               / player1 chose scissors player2 chose GUN
+324 F85A |                  PRINT newLine              
+325 F899 |                  PRINT gun                  
+326 F85A |                  PRINT newLine              
+327 9330 |                  JUMP endifSC              / GUN -  lose & jump to end
+328 F8A5 |  elseifSCT       PRINT player2             / ELSE - scissors CHOSEN
+329 F7F3 |                  PRINT chose                
+32A F85A |                  PRINT newLine             / player1 chose scissors player2 chose scissors
+32B F869 |                  PRINT scissors             
+32C F85A |                  PRINT newLine              
+32D 11AF |                  LOAD p1Win                 
+32E 41B1 |                  SUBT one                   
+32F 21AF |                  STORE p1Win               / tie 
+330 9180 |  endifSC         JUMP resume                
+         |                                            
+         |                                            / ========== fire CHECK =============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+331 11AC |  fireCheck       LOAD p2Choice              
+332 41B1 |                  SUBT one                   
+333 8400 |                  SKIPCOND 400              / checking if rock
+334 933B |                  JUMP elseifF1              
+335 F8A5 |  thenF1          PRINT player2              
+336 F7F3 |                  PRINT chose                
+337 F85A |                  PRINT newLine             / player1 chose fire player2 chose rock
+338 F85E |                  PRINT rock                 
+339 F85A |                  PRINT newLine              
+33A 93AC |                  JUMP endifF               / ROCK - lose & jump to end
+33B 11AC |  elseifF1        LOAD p2Choice              
+33C 41B2 |                  SUBT two                   
+33D 8400 |                  SKIPCOND 400              / checking if paper
+33E 9348 |                  JUMP elseifF2              
+33F F8A5 |  thenF2          PRINT player2              
+340 F7F3 |                  PRINT chose                
+341 F85A |                  PRINT newLine              
+342 F863 |                  PRINT paper               / player1 chose fire player2 chose paper
+343 F85A |                  PRINT newLine              
+344 11AF |                  LOAD p1Win                 
+345 31B1 |                  ADD one                    
+346 21AF |                  STORE p1Win               / PAPER - win & jump to end
+347 93AC |                  JUMP endifF                
+348 11AC |  elseifF2        LOAD p2Choice              
+349 41B3 |                  SUBT three                 
+34A 8400 |                  SKIPCOND 400              / CHECKING scissors
+34B 9355 |                  JUMP elseifF3              
+34C F8A5 |  thenF3          PRINT player2              
+34D F7F3 |                  PRINT chose                
+34E F85A |                  PRINT newLine             / player1 chose fire player2 chose scissors
+34F F869 |                  PRINT scissors             
+350 F85A |                  PRINT newLine              
+351 11AF |                  LOAD p1Win                 
+352 31B1 |                  ADD one                    
+353 21AF |                  STORE p1Win               / SCISSORS -  win & jump to end
+354 93AC |                  JUMP endifF                
+355 11AC |  elseifF3        LOAD p2Choice              
+356 41B5 |                  SUBT five                  
+357 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+358 9362 |                  JUMP elseifF4              
+359 F8A5 |  thenF4          PRINT player2              
+35A F7F3 |                  PRINT chose               / player1 chose fire player2 chose human
+35B F85A |                  PRINT newLine              
+35C F877 |                  PRINT human                
+35D F85A |                  PRINT newLine              
+35E 11AF |                  LOAD p1Win                 
+35F 31B1 |                  ADD one                    
+360 21AF |                  STORE p1Win               / HUMAN -  win & jump to end
+361 93AC |                  JUMP endifF                
+362 11AC |  elseifF4        LOAD p2Choice              
+363 41B6 |                  SUBT six                   
+364 8400 |                  SKIPCOND 400              / CHECKING WOLF
+365 936F |                  JUMP elseifF5              
+366 F8A5 |  thenF5          PRINT player2              
+367 F7F3 |                  PRINT chose               / player1 chose fire player2 chose wolf
+368 F85A |                  PRINT newLine              
+369 F872 |                  PRINT wolf                 
+36A F85A |                  PRINT newLine              
+36B 11AF |                  LOAD p1Win                 
+36C 31B1 |                  ADD one                    
+36D 21AF |                  STORE p1Win               / WOLF -  win & jump to end
+36E 93AC |                  JUMP endifF                
+36F 11AC |  elseifF5        LOAD p2Choice              
+370 41B7 |                  SUBT seven                 
+371 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+372 937C |                  JUMP elseifF6              
+373 F8A5 |  thenF6          PRINT player2              
+374 F7F3 |                  PRINT chose               / player1 chose fire player2 chose SPONGE
+375 F85A |                  PRINT newLine              
+376 F882 |                  PRINT sponge               
+377 F85A |                  PRINT newLine              
+378 11AF |                  LOAD p1Win                 
+379 31B1 |                  ADD one                    
+37A 21AF |                  STORE p1Win               / SPONGE -  win & jump to end
+37B 93AC |                  JUMP endifF                
+37C 11AC |  elseifF6        LOAD p2Choice              
+37D 41B8 |                  SUBT eight                 
+37E 8400 |                  SKIPCOND 400              / CHECKING AIR
+37F 9386 |                  JUMP elseifF7              
+380 F8A5 |  thenF7          PRINT player2              
+381 F7F3 |                  PRINT chose               / player1 chose fire player2 chose AIR
+382 F85A |                  PRINT newLine              
+383 F889 |                  PRINT air                  
+384 F85A |                  PRINT newLine              
+385 93AC |                  JUMP endifF               / AIR -  lose & jump to end
+386 11AC |  elseifF7        LOAD p2Choice              
+387 41B9 |                  SUBT nine                  
+388 8400 |                  SKIPCOND 400              / CHECKING WATER
+389 9390 |                  JUMP elseifF8              
+38A F8A5 |  thenF8          PRINT player2              
+38B F7F3 |                  PRINT chose               / player1 chose fire player2 chose WATER
+38C F85A |                  PRINT newLine              
+38D F88D |                  PRINT water                
+38E F85A |                  PRINT newLine              
+38F 93AC |                  JUMP endifF               / WATER -  lose & jump to end
+390 11AC |  elseifF8        LOAD p2Choice              
+391 41BA |                  SUBT ten                   
+392 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+393 939A |                  JUMP elseifF9              
+394 F8A5 |  thenF9          PRINT player2              
+395 F7F3 |                  PRINT chose               / player1 chose fire player2 chose DEVIL
+396 F85A |                  PRINT newLine              
+397 F893 |                  PRINT devil                
+398 F85A |                  PRINT newLine              
+399 93AC |                  JUMP endifF               / DEVIL -  lose & jump to end
+39A 11AC |  elseifF9        LOAD p2Choice              
+39B 41BB |                  SUBT eleven                
+39C 8400 |                  SKIPCOND 400              / CHECKING GUN
+39D 93A4 |                  JUMP elseifFT              
+39E F8A5 |  thenF10         PRINT player2              
+39F F7F3 |                  PRINT chose               / player1 chose fire player2 chose GUN
+3A0 F85A |                  PRINT newLine              
+3A1 F899 |                  PRINT gun                  
+3A2 F85A |                  PRINT newLine              
+3A3 93AC |                  JUMP endifF               / GUN -  lose & jump to end
+3A4 F8A5 |  elseifFT        PRINT player2             / ELSE - fire CHOSEN
+3A5 F7F3 |                  PRINT chose               / player1 chose fire player2 chose fire
+3A6 F85A |                  PRINT newLine              
+3A7 F87D |                  PRINT fire                 
+3A8 F85A |                  PRINT newLine              
+3A9 11AF |                  LOAD p1Win                 
+3AA 41B1 |                  SUBT one                   
+3AB 21AF |                  STORE p1Win               / tie 
+3AC 9180 |  endifF          JUMP resume                
+         |                                            
+         |                                            
+         |                                            / ========== human CHECK =============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+3AD 11AC |  humanCheck      LOAD p2Choice              
+3AE 41B1 |                  SUBT one                   
+3AF 8400 |                  SKIPCOND 400              / checking if rock
+3B0 93B7 |                  JUMP elseifH1              
+3B1 F8A5 |  thenH1          PRINT player2              
+3B2 F7F3 |                  PRINT chose                
+3B3 F85A |                  PRINT newLine             / player1 chose human player2 chose rock
+3B4 F85E |                  PRINT rock                 
+3B5 F85A |                  PRINT newLine              
+3B6 9428 |                  JUMP endifH               / ROCK - lose & jump to end
+3B7 11AC |  elseifH1        LOAD p2Choice              
+3B8 41B2 |                  SUBT two                   
+3B9 8400 |                  SKIPCOND 400              / checking if paper
+3BA 93C4 |                  JUMP elseifH2              
+3BB F8A5 |  thenH2          PRINT player2              
+3BC F7F3 |                  PRINT chose                
+3BD F85A |                  PRINT newLine              
+3BE F863 |                  PRINT paper               / player1 chose human player2 chose paper
+3BF F85A |                  PRINT newLine              
+3C0 11AF |                  LOAD p1Win                 
+3C1 31B1 |                  ADD one                    
+3C2 21AF |                  STORE p1Win               / PAPER - win & jump to end
+3C3 9428 |                  JUMP endifH                
+3C4 11AC |  elseifH2        LOAD p2Choice              
+3C5 41B3 |                  SUBT three                 
+3C6 8400 |                  SKIPCOND 400              / CHECKING scissors
+3C7 93CE |                  JUMP elseifH3              
+3C8 F8A5 |  thenH3          PRINT player2              
+3C9 F7F3 |                  PRINT chose                
+3CA F85A |                  PRINT newLine             / player1 chose human player2 chose scissors
+3CB F869 |                  PRINT scissors             
+3CC F85A |                  PRINT newLine              
+3CD 9428 |                  JUMP endifH               / SCISSORS -  end & jump to end
+3CE 11AC |  elseifH3        LOAD p2Choice              
+3CF 41B4 |                  SUBT four                  
+3D0 8400 |                  SKIPCOND 400              / CHECKING FIRE
+3D1 93D8 |                  JUMP elseifH4              
+3D2 F8A5 |  thenH4          PRINT player2              
+3D3 F7F3 |                  PRINT chose               / player1 chose human player2 chose fire
+3D4 F85A |                  PRINT newLine              
+3D5 F877 |                  PRINT human                
+3D6 F85A |                  PRINT newLine              
+3D7 9428 |                  JUMP endifH               / FIRE -  lose & jump to end
+3D8 11AC |  elseifH4        LOAD p2Choice              
+3D9 41B6 |                  SUBT six                   
+3DA 8400 |                  SKIPCOND 400              / CHECKING WOLF
+3DB 93E5 |                  JUMP elseifH5              
+3DC F8A5 |  thenH5          PRINT player2              
+3DD F7F3 |                  PRINT chose               / player1 chose human player2 chose wolf
+3DE F85A |                  PRINT newLine              
+3DF F872 |                  PRINT wolf                 
+3E0 F85A |                  PRINT newLine              
+3E1 11AF |                  LOAD p1Win                 
+3E2 31B1 |                  ADD one                    
+3E3 21AF |                  STORE p1Win               / WOLF -  win & jump to end
+3E4 9428 |                  JUMP endifH                
+3E5 11AC |  elseifH5        LOAD p2Choice              
+3E6 41B7 |                  SUBT seven                 
+3E7 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+3E8 93F2 |                  JUMP elseifH6              
+3E9 F8A5 |  thenH6          PRINT player2              
+3EA F7F3 |                  PRINT chose               / player1 chose human player2 chose SPONGE
+3EB F85A |                  PRINT newLine              
+3EC F882 |                  PRINT sponge               
+3ED F85A |                  PRINT newLine              
+3EE 11AF |                  LOAD p1Win                 
+3EF 31B1 |                  ADD one                    
+3F0 21AF |                  STORE p1Win               / SPONGE -  win & jump to end
+3F1 9428 |                  JUMP endifH                
+3F2 11AC |  elseifH6        LOAD p2Choice              
+3F3 41B8 |                  SUBT eight                 
+3F4 8400 |                  SKIPCOND 400              / CHECKING AIR
+3F5 93FF |                  JUMP elseifH7              
+3F6 F8A5 |  thenH7          PRINT player2              
+3F7 F7F3 |                  PRINT chose               / player1 chose human player2 chose AIR
+3F8 F85A |                  PRINT newLine              
+3F9 F889 |                  PRINT air                  
+3FA F85A |                  PRINT newLine              
+3FB 11AF |                  LOAD p1Win                 
+3FC 31B1 |                  ADD one                    
+3FD 21AF |                  STORE p1Win                
+3FE 9428 |                  JUMP endifH               / AIR -  win & jump to end
+3FF 11AC |  elseifH7        LOAD p2Choice              
+400 41B9 |                  SUBT nine                  
+401 8400 |                  SKIPCOND 400              / CHECKING WATER
+402 940C |                  JUMP elseifH8              
+403 F8A5 |  thenH8          PRINT player2              
+404 F7F3 |                  PRINT chose               / player1 chose human player2 chose WATER
+405 F85A |                  PRINT newLine              
+406 F88D |                  PRINT water                
+407 F85A |                  PRINT newLine              
+408 11AF |                  LOAD p1Win                 
+409 31B1 |                  ADD one                    
+40A 21AF |                  STORE p1Win                
+40B 9428 |                  JUMP endifH               / WATER -  win & jump to end
+40C 11AC |  elseifH8        LOAD p2Choice              
+40D 41BA |                  SUBT ten                   
+40E 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+40F 9416 |                  JUMP elseifH9              
+410 F8A5 |  thenH9          PRINT player2              
+411 F7F3 |                  PRINT chose               / player1 chose human player2 chose DEVIL
+412 F85A |                  PRINT newLine              
+413 F893 |                  PRINT devil                
+414 F85A |                  PRINT newLine              
+415 9428 |                  JUMP endifH               / DEVIL -  lose & jump to end
+416 11AC |  elseifH9        LOAD p2Choice              
+417 41BB |                  SUBT eleven                
+418 8400 |                  SKIPCOND 400              / CHECKING GUN
+419 9420 |                  JUMP elseifHT              
+41A F8A5 |  thenH10         PRINT player2              
+41B F7F3 |                  PRINT chose               / player1 chose human player2 chose GUN
+41C F85A |                  PRINT newLine              
+41D F899 |                  PRINT gun                  
+41E F85A |                  PRINT newLine              
+41F 9428 |                  JUMP endifH               / GUN -  lose & jump to end
+420 F8A5 |  elseifHT        PRINT player2             / ELSE - human CHOSEN
+421 F7F3 |                  PRINT chose               / player1 chose human player2 chose human
+422 F85A |                  PRINT newLine              
+423 F877 |                  PRINT human                
+424 F85A |                  PRINT newLine              
+425 11AF |                  LOAD p1Win                 
+426 41B1 |                  SUBT one                   
+427 21AF |                  STORE p1Win               / tie 
+428 9180 |  endifH          JUMP resume                
+         |                                            
+         |                                            
+         |                                            
+         |                                            / =============== wolf CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+429 11AC |  wolfCheck       LOAD p2Choice              
+42A 41B1 |                  SUBT one                   
+42B 8400 |                  SKIPCOND 400              / checking if rock
+42C 9433 |                  JUMP elseifWO1             
+42D F8A5 |  thenWO1         PRINT player2              
+42E F7F3 |                  PRINT chose                
+42F F85A |                  PRINT newLine             / player1 chose wolf player2 chose rock
+430 F85E |                  PRINT rock                 
+431 F85A |                  PRINT newLine              
+432 94A4 |                  JUMP endifWO              / ROCK -  LOSE & jump to end
+433 11AC |  elseifWO1       LOAD p2Choice              
+434 41B2 |                  SUBT two                   
+435 8400 |                  SKIPCOND 400              / checking if paper
+436 9440 |                  JUMP elseifWO2             
+437 F8A5 |  thenWO2         PRINT player2              
+438 F7F3 |                  PRINT chose                
+439 F85A |                  PRINT newLine              
+43A F863 |                  PRINT paper               / player1 chose wolf player2 chose paper
+43B F85A |                  PRINT newLine              
+43C 11AF |                  LOAD p1Win                 
+43D 31B1 |                  ADD one                    
+43E 21AF |                  STORE p1Win                
+43F 94A4 |                  JUMP endifWO              / PAPER - WIN & jump to end
+440 11AC |  elseifWO2       LOAD p2Choice              
+441 41B3 |                  SUBT three                 
+442 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+443 944A |                  JUMP elseifWO3             
+444 F8A5 |  thenWO3         PRINT player2              
+445 F7F3 |                  PRINT chose                
+446 F85A |                  PRINT newLine             / player1 chose wolf player2 chose scissors
+447 F869 |                  PRINT scissors             
+448 F85A |                  PRINT newLine              
+449 94A4 |                  JUMP endifWO              / SCISSORS -  lose & jump to end
+44A 11AC |  elseifWO3       LOAD p2Choice              
+44B 41B4 |                  SUBT four                  
+44C 8400 |                  SKIPCOND 400              / CHECKING FIRE
+44D 9454 |                  JUMP elseifWO4             
+44E F8A5 |  thenWO4         PRINT player2              
+44F F7F3 |                  PRINT chose               / player1 chose wolf player2 chose fire
+450 F85A |                  PRINT newLine              
+451 F87D |                  PRINT fire                 
+452 F85A |                  PRINT newLine              
+453 94A4 |                  JUMP endifWO              / FIRE -  lose & jump to end
+454 11AC |  elseifWO4       LOAD p2Choice              
+455 41B5 |                  SUBT five                  
+456 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+457 945E |                  JUMP elseifWO5             
+458 F8A5 |  thenWO5         PRINT player2              
+459 F7F3 |                  PRINT chose               / player1 chose wolf player2 chose human
+45A F85A |                  PRINT newLine              
+45B F877 |                  PRINT human                
+45C F85A |                  PRINT newLine              
+45D 94A4 |                  JUMP endifWO              / HUMAN -  win & jump to end
+45E 11AC |  elseifWO5       LOAD p2Choice              
+45F 41B7 |                  SUBT seven                 
+460 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+461 946B |                  JUMP elseifWO6             
+462 F8A5 |  thenWO6         PRINT player2              
+463 F7F3 |                  PRINT chose               / player1 chose wolf player2 chose SPONGE
+464 F85A |                  PRINT newLine              
+465 F882 |                  PRINT sponge               
+466 F85A |                  PRINT newLine              
+467 11AF |                  LOAD p1Win                 
+468 31B1 |                  ADD one                    
+469 21AF |                  STORE p1Win                
+46A 94A4 |                  JUMP endifWO              / SPONGE -  win & jump to end
+46B 11AC |  elseifWO6       LOAD p2Choice              
+46C 41B8 |                  SUBT eight                 
+46D 8400 |                  SKIPCOND 400              / CHECKING AIR
+46E 9478 |                  JUMP elseifWO7             
+46F F8A5 |  thenWO7         PRINT player2              
+470 F7F3 |                  PRINT chose               / player1 chose wolf player2 chose AIR
+471 F85A |                  PRINT newLine              
+472 F889 |                  PRINT air                  
+473 F85A |                  PRINT newLine              
+474 11AF |                  LOAD p1Win                 
+475 31B1 |                  ADD one                    
+476 21AF |                  STORE p1Win               / AIR -  win & jump to end
+477 94A4 |                  JUMP endifWO               
+478 11AC |  elseifWO7       LOAD p2Choice              
+479 41B9 |                  SUBT nine                  
+47A 8400 |                  SKIPCOND 400              / CHECKING WATER
+47B 9485 |                  JUMP elseifWO8             
+47C F8A5 |  thenWO8         PRINT player2              
+47D F7F3 |                  PRINT chose               / player1 chose wolf player2 chose WATER
+47E F85A |                  PRINT newLine              
+47F F88D |                  PRINT water                
+480 F85A |                  PRINT newLine              
+481 11AF |                  LOAD p1Win                 
+482 31B1 |                  ADD one                    
+483 21AF |                  STORE p1Win                
+484 94A4 |                  JUMP endifWO              / WATER -  win & jump to end
+485 11AC |  elseifWO8       LOAD p2Choice              
+486 41BA |                  SUBT ten                   
+487 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+488 9492 |                  JUMP elseifWO9             
+489 F8A5 |  thenWO9         PRINT player2              
+48A F7F3 |                  PRINT chose               / player1 chose wolf player2 chose DEVIL
+48B F85A |                  PRINT newLine              
+48C F893 |                  PRINT devil                
+48D F85A |                  PRINT newLine              
+48E 11AF |                  LOAD p1Win                 
+48F 31B1 |                  ADD one                    
+490 21AF |                  STORE p1Win                
+491 94A4 |                  JUMP endifWO              / DEVIL -  win & jump to end
+492 11AC |  elseifWO9       LOAD p2Choice              
+493 41BB |                  SUBT eleven                
+494 8400 |                  SKIPCOND 400              / CHECKING GUN
+495 949C |                  JUMP elseifWOT             
+496 F8A5 |  thenWO10        PRINT player2              
+497 F7F3 |                  PRINT chose               / player1 chose wolf player2 chose GUN
+498 F85A |                  PRINT newLine              
+499 F899 |                  PRINT gun                  
+49A F85A |                  PRINT newLine              
+49B 94A4 |                  JUMP endifWO              / GUN -  lose & jump to end
+49C F8A5 |  elseifWOT       PRINT player2             / ELSE - wolf CHOSEN
+49D F7F3 |                  PRINT chose                
+49E F85A |                  PRINT newLine             / player1 chose wolf player2 chose wolf
+49F F872 |                  PRINT wolf                 
+4A0 F85A |                  PRINT newLine              
+4A1 11AF |                  LOAD p1Win                 
+4A2 41B1 |                  SUBT one                   
+4A3 21AF |                  STORE p1Win               / tie 
+4A4 9180 |  endifWO         JUMP resume                
+         |                                            
+         |                                            
+         |                                            / =============== sponge CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+4A5 11AC |  spongeCheck     LOAD p2Choice              
+4A6 41B1 |                  SUBT one                   
+4A7 8400 |                  SKIPCOND 400              / checking if rock
+4A8 94AF |                  JUMP elseifSP1             
+4A9 F8A5 |  thenSP1         PRINT player2              
+4AA F7F3 |                  PRINT chose                
+4AB F85A |                  PRINT newLine             / player1 chose sponge player2 chose rock
+4AC F85E |                  PRINT rock                 
+4AD F85A |                  PRINT newLine              
+4AE 9520 |                  JUMP endifSP              / ROCK -  lose & jump to end
+4AF 11AC |  elseifSP1       LOAD p2Choice              
+4B0 41B2 |                  SUBT two                   
+4B1 8400 |                  SKIPCOND 400              / checking if paper
+4B2 94BC |                  JUMP elseifSP2             
+4B3 F8A5 |  thenSP2         PRINT player2              
+4B4 F7F3 |                  PRINT chose                
+4B5 F85A |                  PRINT newLine              
+4B6 F863 |                  PRINT paper               / player1 chose sponge player2 chose paper
+4B7 F85A |                  PRINT newLine              
+4B8 11AF |                  LOAD p1Win                 
+4B9 31B1 |                  ADD one                    
+4BA 21AF |                  STORE p1Win                
+4BB 9520 |                  JUMP endifSP              / PAPER - WIN & jump to end
+4BC 11AC |  elseifSP2       LOAD p2Choice              
+4BD 41B3 |                  SUBT three                 
+4BE 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+4BF 94C6 |                  JUMP elseifSP3             
+4C0 F8A5 |  thenSP3         PRINT player2              
+4C1 F7F3 |                  PRINT chose                
+4C2 F85A |                  PRINT newLine             / player1 chose sponge player2 chose scissors
+4C3 F869 |                  PRINT scissors             
+4C4 F85A |                  PRINT newLine              
+4C5 9520 |                  JUMP endifSP              / SCISSORS -  lose & jump to end
+4C6 11AC |  elseifSP3       LOAD p2Choice              
+4C7 41B4 |                  SUBT four                  
+4C8 8400 |                  SKIPCOND 400              / CHECKING FIRE
+4C9 94D0 |                  JUMP elseifSP4             
+4CA F8A5 |  thenSP4         PRINT player2              
+4CB F7F3 |                  PRINT chose               / player1 chose sponge player2 chose fire
+4CC F85A |                  PRINT newLine              
+4CD F87D |                  PRINT fire                 
+4CE F85A |                  PRINT newLine              
+4CF 9520 |                  JUMP endifSP              / FIRE -  lose & jump to end
+4D0 11AC |  elseifSP4       LOAD p2Choice              
+4D1 41B5 |                  SUBT five                  
+4D2 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+4D3 94DA |                  JUMP elseifSP5             
+4D4 F8A5 |  thenSP5         PRINT player2              
+4D5 F7F3 |                  PRINT chose               / player1 chose sponge player2 chose human
+4D6 F85A |                  PRINT newLine              
+4D7 F877 |                  PRINT human                
+4D8 F85A |                  PRINT newLine              
+4D9 9520 |                  JUMP endifSP              / HUMAN -  lose & jump to end
+4DA 11AC |  elseifSP5       LOAD p2Choice              
+4DB 41B6 |                  SUBT six                   
+4DC 8400 |                  SKIPCOND 400              / CHECKING WOLF
+4DD 94E4 |                  JUMP elseifSP6             
+4DE F8A5 |  thenSP6         PRINT player2              
+4DF F7F3 |                  PRINT chose               / player1 chose sponge player2 chose WOLF
+4E0 F85A |                  PRINT newLine              
+4E1 F882 |                  PRINT sponge               
+4E2 F85A |                  PRINT newLine              
+4E3 9520 |                  JUMP endifSP              / WOLF -  lose & jump to end
+4E4 11AC |  elseifSP6       LOAD p2Choice              
+4E5 41B8 |                  SUBT eight                 
+4E6 8400 |                  SKIPCOND 400              / CHECKING AIR
+4E7 94F1 |                  JUMP elseifSP7             
+4E8 F8A5 |  thenSP7         PRINT player2              
+4E9 F7F3 |                  PRINT chose               / player1 chose sponge player2 chose AIR
+4EA F85A |                  PRINT newLine              
+4EB F889 |                  PRINT air                  
+4EC F85A |                  PRINT newLine              
+4ED 11AF |                  LOAD p1Win                 
+4EE 31B1 |                  ADD one                    
+4EF 21AF |                  STORE p1Win               / AIR -  win & jump to end
+4F0 9520 |                  JUMP endifSP               
+4F1 11AC |  elseifSP7       LOAD p2Choice              
+4F2 41B9 |                  SUBT nine                  
+4F3 8400 |                  SKIPCOND 400              / CHECKING WATER
+4F4 94FE |                  JUMP elseifSP8             
+4F5 F8A5 |  thenSP8         PRINT player2              
+4F6 F7F3 |                  PRINT chose               / player1 chose sponge player2 chose WATER
+4F7 F85A |                  PRINT newLine              
+4F8 F88D |                  PRINT water                
+4F9 F85A |                  PRINT newLine              
+4FA 11AF |                  LOAD p1Win                 
+4FB 31B1 |                  ADD one                    
+4FC 21AF |                  STORE p1Win                
+4FD 9520 |                  JUMP endifSP              / WATER -  win & jump to end
+4FE 11AC |  elseifSP8       LOAD p2Choice              
+4FF 41BA |                  SUBT ten                   
+500 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+501 950B |                  JUMP elseifSP9             
+502 F8A5 |  thenSP9         PRINT player2              
+503 F7F3 |                  PRINT chose               / player1 chose sponge player2 chose DEVIL
+504 F85A |                  PRINT newLine              
+505 F893 |                  PRINT devil                
+506 F85A |                  PRINT newLine              
+507 11AF |                  LOAD p1Win                 
+508 31B1 |                  ADD one                    
+509 21AF |                  STORE p1Win                
+50A 9520 |                  JUMP endifSP              / DEVIL -  win & jump to end
+50B 11AC |  elseifSP9       LOAD p2Choice              
+50C 41BB |                  SUBT eleven                
+50D 8400 |                  SKIPCOND 400              / CHECKING GUN
+50E 9518 |                  JUMP elseifSPT             
+50F F8A5 |  thenSP10        PRINT player2              
+510 F7F3 |                  PRINT chose               / player1 chose sponge player2 chose GUN
+511 F85A |                  PRINT newLine              
+512 F899 |                  PRINT gun                  
+513 F85A |                  PRINT newLine              
+514 11AF |                  LOAD p1Win                 
+515 31B1 |                  ADD one                    
+516 21AF |                  STORE p1Win                
+517 9520 |                  JUMP endifSP              / GUN -  lose & jump to end
+518 F8A5 |  elseifSPT       PRINT player2             / ELSE - sponge CHOSEN
+519 F7F3 |                  PRINT chose                
+51A F85A |                  PRINT newLine             / player1 chose sponge player2 chose sponge
+51B F882 |                  PRINT sponge               
+51C F85A |                  PRINT newLine              
+51D 11AF |                  LOAD p1Win                 
+51E 41B1 |                  SUBT one                   
+51F 21AF |                  STORE p1Win               / tie 
+520 9180 |  endifSP         JUMP resume                
+         |                                            
+         |                                            / =============== air CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+521 11AC |  airCheck        LOAD p2Choice              
+522 41B1 |                  SUBT one                   
+523 8400 |                  SKIPCOND 400              / checking if rock
+524 952E |                  JUMP elseifA1              
+525 F8A5 |  thenA1          PRINT player2              
+526 F7F3 |                  PRINT chose                
+527 F85A |                  PRINT newLine             / player1 chose air player2 chose rock
+528 F85E |                  PRINT rock                 
+529 F85A |                  PRINT newLine              
+52A 11AF |                  LOAD p1Win                 
+52B 31B1 |                  ADD one                    
+52C 21AF |                  STORE p1Win                
+52D 959C |                  JUMP endifA               / ROCK -  win & jump to end
+52E 11AC |  elseifA1        LOAD p2Choice              
+52F 41B2 |                  SUBT two                   
+530 8400 |                  SKIPCOND 400              / checking if paper
+531 9538 |                  JUMP elseifA2              
+532 F8A5 |  thenA2          PRINT player2              
+533 F7F3 |                  PRINT chose                
+534 F85A |                  PRINT newLine              
+535 F863 |                  PRINT paper               / player1 chose air player2 chose paper
+536 F85A |                  PRINT newLine              
+537 959C |                  JUMP endifA               / PAPER - lose & jump to end
+538 11AC |  elseifA2        LOAD p2Choice              
+539 41B3 |                  SUBT three                 
+53A 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+53B 9542 |                  JUMP elseifA3              
+53C F8A5 |  thenA3          PRINT player2              
+53D F7F3 |                  PRINT chose                
+53E F85A |                  PRINT newLine             / player1 chose air player2 chose scissors
+53F F869 |                  PRINT scissors             
+540 F85A |                  PRINT newLine              
+541 959C |                  JUMP endifA               / SCISSORS -  lose & jump to end
+542 11AC |  elseifA3        LOAD p2Choice              
+543 41B4 |                  SUBT four                  
+544 8400 |                  SKIPCOND 400              / CHECKING FIRE
+545 954F |                  JUMP elseifA4              
+546 F8A5 |  thenA4          PRINT player2              
+547 F7F3 |                  PRINT chose               / player1 chose air player2 chose fire
+548 F85A |                  PRINT newLine              
+549 F87D |                  PRINT fire                 
+54A F85A |                  PRINT newLine              
+54B 11AF |                  LOAD p1Win                 
+54C 31B1 |                  ADD one                    
+54D 21AF |                  STORE p1Win                
+54E 959C |                  JUMP endifA               / FIRE -  win & jump to end
+54F 11AC |  elseifA4        LOAD p2Choice              
+550 41B5 |                  SUBT five                  
+551 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+552 9559 |                  JUMP elseifA5              
+553 F8A5 |  thenA5          PRINT player2              
+554 F7F3 |                  PRINT chose               / player1 chose air player2 chose human
+555 F85A |                  PRINT newLine              
+556 F877 |                  PRINT human                
+557 F85A |                  PRINT newLine              
+558 959C |                  JUMP endifA               / HUMAN -  lose & jump to end
+559 11AC |  elseifA5        LOAD p2Choice              
+55A 41B6 |                  SUBT six                   
+55B 8400 |                  SKIPCOND 400              / CHECKING WOLF
+55C 9563 |                  JUMP elseifA6              
+55D F8A5 |  thenA6          PRINT player2              
+55E F7F3 |                  PRINT chose               / player1 chose air player2 chose WOLF
+55F F85A |                  PRINT newLine              
+560 F889 |                  PRINT air                  
+561 F85A |                  PRINT newLine              
+562 959C |                  JUMP endifA               / WOLF -  lose & jump to end
+563 11AC |  elseifA6        LOAD p2Choice              
+564 41B7 |                  SUBT seven                 
+565 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+566 956D |                  JUMP elseifA7              
+567 F8A5 |  thenA7          PRINT player2              
+568 F7F3 |                  PRINT chose               / player1 chose air player2 chose SPONGE
+569 F85A |                  PRINT newLine              
+56A F882 |                  PRINT sponge               
+56B F85A |                  PRINT newLine              
+56C 959C |                  JUMP endifA               / SPONGE -  lose & jump to end
+56D 11AC |  elseifA7        LOAD p2Choice              
+56E 41B9 |                  SUBT nine                  
+56F 8400 |                  SKIPCOND 400              / CHECKING WATER
+570 957A |                  JUMP elseifA8              
+571 F8A5 |  thenA8          PRINT player2              
+572 F7F3 |                  PRINT chose               / player1 chose air player2 chose WATER
+573 F85A |                  PRINT newLine              
+574 F88D |                  PRINT water                
+575 F85A |                  PRINT newLine              
+576 11AF |                  LOAD p1Win                 
+577 31B1 |                  ADD one                    
+578 21AF |                  STORE p1Win                
+579 959C |                  JUMP endifA               / WATER -  win & jump to end
+57A 11AC |  elseifA8        LOAD p2Choice              
+57B 41BA |                  SUBT ten                   
+57C 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+57D 9587 |                  JUMP elseifA9              
+57E F8A5 |  thenA9          PRINT player2              
+57F F7F3 |                  PRINT chose               / player1 chose air player2 chose DEVIL
+580 F85A |                  PRINT newLine              
+581 F893 |                  PRINT devil                
+582 F85A |                  PRINT newLine              
+583 11AF |                  LOAD p1Win                 
+584 31B1 |                  ADD one                    
+585 21AF |                  STORE p1Win                
+586 959C |                  JUMP endifA               / DEVIL -  win & jump to end
+587 11AC |  elseifA9        LOAD p2Choice              
+588 41BB |                  SUBT eleven                
+589 8400 |                  SKIPCOND 400              / CHECKING GUN
+58A 9594 |                  JUMP elseifAT              
+58B F8A5 |  thenA10         PRINT player2              
+58C F7F3 |                  PRINT chose               / player1 chose air player2 chose GUN
+58D F85A |                  PRINT newLine              
+58E F899 |                  PRINT gun                  
+58F F85A |                  PRINT newLine              
+590 11AF |                  LOAD p1Win                 
+591 31B1 |                  ADD one                    
+592 21AF |                  STORE p1Win                
+593 959C |                  JUMP endifA               / GUN -  win & jump to end
+594 F8A5 |  elseifAT        PRINT player2             / ELSE - air CHOSEN
+595 F7F3 |                  PRINT chose                
+596 F85A |                  PRINT newLine             / player1 chose air player2 chose air
+597 F889 |                  PRINT air                  
+598 F85A |                  PRINT newLine              
+599 11AF |                  LOAD p1Win                 
+59A 41B1 |                  SUBT one                   
+59B 21AF |                  STORE p1Win               / tie 
+59C 9180 |  endifA          JUMP resume                
+         |                                            
+         |                                            
+         |                                            
+         |                                            / =============== water CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+59D 11AC |  waterCheck      LOAD p2Choice              
+59E 41B1 |                  SUBT one                   
+59F 8400 |                  SKIPCOND 400              / checking if rock
+5A0 95AA |                  JUMP endifWA1              
+5A1 F8A5 |  thenWA1         PRINT player2              
+5A2 F7F3 |                  PRINT chose                
+5A3 F85A |                  PRINT newLine             / player1 chose water player2 chose rock
+5A4 F85E |                  PRINT rock                 
+5A5 F85A |                  PRINT newLine              
+5A6 11AF |                  LOAD p1Win                 
+5A7 31B1 |                  ADD one                    
+5A8 21AF |                  STORE p1Win                
+5A9 9618 |                  JUMP endifWA              / ROCK -  win & jump to end
+5AA 11AC |  endifWA1        LOAD p2Choice              
+5AB 41B2 |                  SUBT two                   
+5AC 8400 |                  SKIPCOND 400              / checking if paper
+5AD 95B4 |                  JUMP endifWA2              
+5AE F8A5 |  thenWA2         PRINT player2              
+5AF F7F3 |                  PRINT chose                
+5B0 F85A |                  PRINT newLine              
+5B1 F863 |                  PRINT paper               / player1 chose water player2 chose paper
+5B2 F85A |                  PRINT newLine              
+5B3 9618 |                  JUMP endifWA              / PAPER - lose & jump to end
+5B4 11AC |  endifWA2        LOAD p2Choice              
+5B5 41B3 |                  SUBT three                 
+5B6 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+5B7 95C1 |                  JUMP endifWA3              
+5B8 F8A5 |  thenWA3         PRINT player2              
+5B9 F7F3 |                  PRINT chose                
+5BA F85A |                  PRINT newLine             / player1 chose water player2 chose scissors
+5BB F869 |                  PRINT scissors             
+5BC F85A |                  PRINT newLine              
+5BD 11AF |                  LOAD p1Win                 
+5BE 31B1 |                  ADD one                    
+5BF 21AF |                  STORE p1Win                
+5C0 9618 |                  JUMP endifWA              / SCISSORS -  win & jump to end
+5C1 11AC |  endifWA3        LOAD p2Choice              
+5C2 41B4 |                  SUBT four                  
+5C3 8400 |                  SKIPCOND 400              / CHECKING FIRE
+5C4 95CE |                  JUMP endifWA4              
+5C5 F8A5 |  thenWA4         PRINT player2              
+5C6 F7F3 |                  PRINT chose               / player1 chose water player2 chose fire
+5C7 F85A |                  PRINT newLine              
+5C8 F87D |                  PRINT fire                 
+5C9 F85A |                  PRINT newLine              
+5CA 11AF |                  LOAD p1Win                 
+5CB 31B1 |                  ADD one                    
+5CC 21AF |                  STORE p1Win                
+5CD 9618 |                  JUMP endifWA              / FIRE -  win & jump to end
+5CE 11AC |  endifWA4        LOAD p2Choice              
+5CF 41B5 |                  SUBT five                  
+5D0 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+5D1 95D8 |                  JUMP endifWA5              
+5D2 F8A5 |  thenWA5         PRINT player2              
+5D3 F7F3 |                  PRINT chose               / player1 chose water player2 chose human
+5D4 F85A |                  PRINT newLine              
+5D5 F877 |                  PRINT human                
+5D6 F85A |                  PRINT newLine              
+5D7 9618 |                  JUMP endifWA              / HUMAN -  lose & jump to end
+5D8 11AC |  endifWA5        LOAD p2Choice              
+5D9 41B6 |                  SUBT six                   
+5DA 8400 |                  SKIPCOND 400              / CHECKING WOLF
+5DB 95E2 |                  JUMP endifWA6              
+5DC F8A5 |  thenWA6         PRINT player2              
+5DD F7F3 |                  PRINT chose               / player1 chose water player2 chose WOLF
+5DE F85A |                  PRINT newLine              
+5DF F88D |                  PRINT water                
+5E0 F85A |                  PRINT newLine              
+5E1 9618 |                  JUMP endifWA              / WOLF -  lose & jump to end
+5E2 11AC |  endifWA6        LOAD p2Choice              
+5E3 41B7 |                  SUBT seven                 
+5E4 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+5E5 95EC |                  JUMP endifWA7              
+5E6 F8A5 |  thenWA7         PRINT player2              
+5E7 F7F3 |                  PRINT chose               / player1 chose water player2 chose SPONGE
+5E8 F85A |                  PRINT newLine              
+5E9 F882 |                  PRINT sponge               
+5EA F85A |                  PRINT newLine              
+5EB 9618 |                  JUMP endifWA              / SPONGE -  lose & jump to end
+5EC 11AC |  endifWA7        LOAD p2Choice              
+5ED 41B8 |                  SUBT eight                 
+5EE 8400 |                  SKIPCOND 400              / CHECKING AIR
+5EF 95F6 |                  JUMP endifWA8              
+5F0 F8A5 |  thenWA8         PRINT player2              
+5F1 F7F3 |                  PRINT chose               / player1 chose water player2 chose AIR
+5F2 F85A |                  PRINT newLine              
+5F3 F889 |                  PRINT air                  
+5F4 F85A |                  PRINT newLine              
+5F5 9618 |                  JUMP endifWA              / AIR -  lose & jump to end
+5F6 11AC |  endifWA8        LOAD p2Choice              
+5F7 41BA |                  SUBT ten                   
+5F8 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+5F9 9603 |                  JUMP endifWA9              
+5FA F8A5 |  thenWA9         PRINT player2              
+5FB F7F3 |                  PRINT chose               / player1 chose water player2 chose DEVIL
+5FC F85A |                  PRINT newLine              
+5FD F893 |                  PRINT devil                
+5FE F85A |                  PRINT newLine              
+5FF 11AF |                  LOAD p1Win                 
+600 31B1 |                  ADD one                    
+601 21AF |                  STORE p1Win                
+602 9618 |                  JUMP endifWA              / DEVIL -  win & jump to end
+603 11AC |  endifWA9        LOAD p2Choice              
+604 41BB |                  SUBT eleven                
+605 8400 |                  SKIPCOND 400              / CHECKING GUN
+606 9610 |                  JUMP endifWAT              
+607 F8A5 |  thenWA10        PRINT player2              
+608 F7F3 |                  PRINT chose               / player1 chose water player2 chose GUN
+609 F85A |                  PRINT newLine              
+60A F899 |                  PRINT gun                  
+60B F85A |                  PRINT newLine              
+60C 11AF |                  LOAD p1Win                 
+60D 31B1 |                  ADD one                    
+60E 21AF |                  STORE p1Win                
+60F 9618 |                  JUMP endifWA              / GUN -  win & jump to end
+610 F8A5 |  endifWAT        PRINT player2             / ELSE - water CHOSEN
+611 F7F3 |                  PRINT chose                
+612 F85A |                  PRINT newLine             / player1 chose water player2 chose water
+613 F88D |                  PRINT water                
+614 F85A |                  PRINT newLine              
+615 11AF |                  LOAD p1Win                 
+616 41B1 |                  SUBT one                   
+617 21AF |                  STORE p1Win               / tie 
+618 9180 |  endifWA         JUMP resume                
+         |                                            
+         |                                            
+         |                                            / =============== devil CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+619 11AC |  devilCheck      LOAD p2Choice              
+61A 41B1 |                  SUBT one                   
+61B 8400 |                  SKIPCOND 400              / checking if rock
+61C 9626 |                  JUMP endifD1               
+61D F8A5 |  thenD1          PRINT player2              
+61E F7F3 |                  PRINT chose                
+61F F85A |                  PRINT newLine             / player1 chose devil player2 chose rock
+620 F85E |                  PRINT rock                 
+621 F85A |                  PRINT newLine              
+622 11AF |                  LOAD p1Win                 
+623 31B1 |                  ADD one                    
+624 21AF |                  STORE p1Win                
+625 9694 |                  JUMP endifD               / ROCK -  win & jump to end
+626 11AC |  endifD1         LOAD p2Choice              
+627 41B2 |                  SUBT two                   
+628 8400 |                  SKIPCOND 400              / checking if paper
+629 9630 |                  JUMP endifD2               
+62A F8A5 |  thenD2          PRINT player2              
+62B F7F3 |                  PRINT chose                
+62C F85A |                  PRINT newLine              
+62D F863 |                  PRINT paper               / player1 chose devil player2 chose paper
+62E F85A |                  PRINT newLine              
+62F 9694 |                  JUMP endifD               / PAPER - lose & jump to end
+630 11AC |  endifD2         LOAD p2Choice              
+631 41B3 |                  SUBT three                 
+632 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+633 963D |                  JUMP endifD3               
+634 F8A5 |  thenD3          PRINT player2              
+635 F7F3 |                  PRINT chose                
+636 F85A |                  PRINT newLine             / player1 chose devil player2 chose scissors
+637 F869 |                  PRINT scissors             
+638 F85A |                  PRINT newLine              
+639 11AF |                  LOAD p1Win                 
+63A 31B1 |                  ADD one                    
+63B 21AF |                  STORE p1Win                
+63C 9694 |                  JUMP endifD               / SCISSORS -  win & jump to end
+63D 11AC |  endifD3         LOAD p2Choice              
+63E 41B4 |                  SUBT four                  
+63F 8400 |                  SKIPCOND 400              / CHECKING FIRE
+640 964A |                  JUMP endifD4               
+641 F8A5 |  thenD4          PRINT player2              
+642 F7F3 |                  PRINT chose               / player1 chose devil player2 chose fire
+643 F85A |                  PRINT newLine              
+644 F87D |                  PRINT fire                 
+645 F85A |                  PRINT newLine              
+646 11AF |                  LOAD p1Win                 
+647 31B1 |                  ADD one                    
+648 21AF |                  STORE p1Win                
+649 9694 |                  JUMP endifD               / FIRE -  win & jump to end
+64A 11AC |  endifD4         LOAD p2Choice              
+64B 41B5 |                  SUBT five                  
+64C 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+64D 9657 |                  JUMP endifD5               
+64E F8A5 |  thenD5          PRINT player2              
+64F F7F3 |                  PRINT chose               / player1 chose devil player2 chose human
+650 F85A |                  PRINT newLine              
+651 F877 |                  PRINT human                
+652 F85A |                  PRINT newLine              
+653 11AF |                  LOAD p1Win                 
+654 31B1 |                  ADD one                    
+655 21AF |                  STORE p1Win                
+656 9694 |                  JUMP endifD               / HUMAN -  lose & jump to end
+657 11AC |  endifD5         LOAD p2Choice              
+658 41B6 |                  SUBT six                   
+659 8400 |                  SKIPCOND 400              / CHECKING WOLF
+65A 9661 |                  JUMP endifD6               
+65B F8A5 |  thenD6          PRINT player2              
+65C F7F3 |                  PRINT chose               / player1 chose devil player2 chose WOLF
+65D F85A |                  PRINT newLine              
+65E F893 |                  PRINT devil                
+65F F85A |                  PRINT newLine              
+660 9694 |                  JUMP endifD               / WOLF -  lose & jump to end
+661 11AC |  endifD6         LOAD p2Choice              
+662 41B7 |                  SUBT seven                 
+663 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+664 966B |                  JUMP endifD7               
+665 F8A5 |  thenD7          PRINT player2              
+666 F7F3 |                  PRINT chose               / player1 chose devil player2 chose SPONGE
+667 F85A |                  PRINT newLine              
+668 F882 |                  PRINT sponge               
+669 F85A |                  PRINT newLine              
+66A 9694 |                  JUMP endifD               / SPONGE -  lose & jump to end
+66B 11AC |  endifD7         LOAD p2Choice              
+66C 41B8 |                  SUBT eight                 
+66D 8400 |                  SKIPCOND 400              / CHECKING AIR
+66E 9675 |                  JUMP endifD8               
+66F F8A5 |  thenD8          PRINT player2              
+670 F7F3 |                  PRINT chose               / player1 chose devil player2 chose AIR
+671 F85A |                  PRINT newLine              
+672 F889 |                  PRINT air                  
+673 F85A |                  PRINT newLine              
+674 9694 |                  JUMP endifD               / AIR -  lose & jump to end
+675 11AC |  endifD8         LOAD p2Choice              
+676 41B9 |                  SUBT nine                  
+677 8400 |                  SKIPCOND 400              / CHECKING WATER
+678 967F |                  JUMP endifD9               
+679 F8A5 |  thenD9          PRINT player2              
+67A F7F3 |                  PRINT chose               / player1 chose devil player2 chose WATER
+67B F85A |                  PRINT newLine              
+67C F88D |                  PRINT water                
+67D F85A |                  PRINT newLine              
+67E 9694 |                  JUMP endifD               / WATER -  lose & jump to end
+67F 11AC |  endifD9         LOAD p2Choice              
+680 41BB |                  SUBT eleven                
+681 8400 |                  SKIPCOND 400              / CHECKING GUN
+682 968C |                  JUMP endifDT               
+683 F8A5 |  thenD10         PRINT player2              
+684 F7F3 |                  PRINT chose               / player1 chose devil player2 chose GUN
+685 F85A |                  PRINT newLine              
+686 F899 |                  PRINT gun                  
+687 F85A |                  PRINT newLine              
+688 11AF |                  LOAD p1Win                 
+689 31B1 |                  ADD one                    
+68A 21AF |                  STORE p1Win                
+68B 9694 |                  JUMP endifD               / GUN -  win & jump to end
+68C F8A5 |  endifDT         PRINT player2             / ELSE - devil CHOSEN
+68D F7F3 |                  PRINT chose                
+68E F85A |                  PRINT newLine             / player1 chose devil player2 chose devil
+68F F893 |                  PRINT devil                
+690 F85A |                  PRINT newLine              
+691 11AF |                  LOAD p1Win                 
+692 41B1 |                  SUBT one                   
+693 21AF |                  STORE p1Win               / tie 
+694 9180 |  endifD          JUMP resume                
+         |                                            
+         |                                            / =============== gun CHECK ===============
+         |                                            /	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+         |                                            /	water(9), devil(10), or gun(11)
+         |                                            
+         |                                            
+695 11AC |  gunCheck        LOAD p2Choice              
+696 41B1 |                  SUBT one                   
+697 8400 |                  SKIPCOND 400              / checking if rock
+698 96A2 |                  JUMP elseifG1              
+699 F8A5 |  thenG1          PRINT player2              
+69A F7F3 |                  PRINT chose                
+69B F85A |                  PRINT newLine             / player1 chose gun player2 chose rock
+69C F85E |                  PRINT rock                 
+69D F85A |                  PRINT newLine              
+69E 11AF |                  LOAD p1Win                 
+69F 31B1 |                  ADD one                    
+6A0 21AF |                  STORE p1Win                
+6A1 9710 |                  JUMP endifG               / ROCK -  win & jump to end
+6A2 11AC |  elseifG1        LOAD p2Choice              
+6A3 41B2 |                  SUBT two                   
+6A4 8400 |                  SKIPCOND 400              / checking if paper
+6A5 96AC |                  JUMP elseifG2              
+6A6 F8A5 |  thenG2          PRINT player2              
+6A7 F7F3 |                  PRINT chose                
+6A8 F85A |                  PRINT newLine              
+6A9 F863 |                  PRINT paper               / player1 chose gun player2 chose paper
+6AA F85A |                  PRINT newLine              
+6AB 9710 |                  JUMP endifG               / PAPER - lose & jump to end
+6AC 11AC |  elseifG2        LOAD p2Choice              
+6AD 41B3 |                  SUBT three                 
+6AE 8400 |                  SKIPCOND 400              / CHECKING SCISSORS
+6AF 96B9 |                  JUMP elseifG3              
+6B0 F8A5 |  thenG3          PRINT player2              
+6B1 F7F3 |                  PRINT chose                
+6B2 F85A |                  PRINT newLine             / player1 chose gun player2 chose scissors
+6B3 F869 |                  PRINT scissors             
+6B4 F85A |                  PRINT newLine              
+6B5 11AF |                  LOAD p1Win                 
+6B6 31B1 |                  ADD one                    
+6B7 21AF |                  STORE p1Win                
+6B8 9710 |                  JUMP endifG               / SCISSORS -  win & jump to end
+6B9 11AC |  elseifG3        LOAD p2Choice              
+6BA 41B4 |                  SUBT four                  
+6BB 8400 |                  SKIPCOND 400              / CHECKING FIRE
+6BC 96C6 |                  JUMP elseifG4              
+6BD F8A5 |  thenG4          PRINT player2              
+6BE F7F3 |                  PRINT chose               / player1 chose gun player2 chose fire
+6BF F85A |                  PRINT newLine              
+6C0 F87D |                  PRINT fire                 
+6C1 F85A |                  PRINT newLine              
+6C2 11AF |                  LOAD p1Win                 
+6C3 31B1 |                  ADD one                    
+6C4 21AF |                  STORE p1Win                
+6C5 9710 |                  JUMP endifG               / FIRE -  win & jump to end
+6C6 11AC |  elseifG4        LOAD p2Choice              
+6C7 41B5 |                  SUBT five                  
+6C8 8400 |                  SKIPCOND 400              / CHECKING HUMAN
+6C9 96D3 |                  JUMP elseifG5              
+6CA F8A5 |  thenG5          PRINT player2              
+6CB F7F3 |                  PRINT chose               / player1 chose gun player2 chose human
+6CC F85A |                  PRINT newLine              
+6CD F877 |                  PRINT human                
+6CE F85A |                  PRINT newLine              
+6CF 11AF |                  LOAD p1Win                 
+6D0 31B1 |                  ADD one                    
+6D1 21AF |                  STORE p1Win                
+6D2 9710 |                  JUMP endifG               / HUMAN -  lose & jump to end
+6D3 11AC |  elseifG5        LOAD p2Choice              
+6D4 41B6 |                  SUBT six                   
+6D5 8400 |                  SKIPCOND 400              / CHECKING WOLF
+6D6 96E0 |                  JUMP elseifG6              
+6D7 F8A5 |  thenG6          PRINT player2              
+6D8 F7F3 |                  PRINT chose               / player1 chose gun player2 chose WOLF
+6D9 F85A |                  PRINT newLine              
+6DA F899 |                  PRINT gun                  
+6DB F85A |                  PRINT newLine              
+6DC 11AF |                  LOAD p1Win                 
+6DD 31B1 |                  ADD one                    
+6DE 21AF |                  STORE p1Win                
+6DF 9710 |                  JUMP endifG               / WOLF -  win & jump to end
+6E0 11AC |  elseifG6        LOAD p2Choice              
+6E1 41B7 |                  SUBT seven                 
+6E2 8400 |                  SKIPCOND 400              / CHECKING SPONGE
+6E3 96EA |                  JUMP elseifG7              
+6E4 F8A5 |  thenG7          PRINT player2              
+6E5 F7F3 |                  PRINT chose               / player1 chose gun player2 chose SPONGE
+6E6 F85A |                  PRINT newLine              
+6E7 F882 |                  PRINT sponge               
+6E8 F85A |                  PRINT newLine              
+6E9 9710 |                  JUMP endifG               / SPONGE -  lose & jump to end
+6EA 11AC |  elseifG7        LOAD p2Choice              
+6EB 41B8 |                  SUBT eight                 
+6EC 8400 |                  SKIPCOND 400              / CHECKING AIR
+6ED 96F4 |                  JUMP elseifG8              
+6EE F8A5 |  thenG8          PRINT player2              
+6EF F7F3 |                  PRINT chose               / player1 chose gun player2 chose AIR
+6F0 F85A |                  PRINT newLine              
+6F1 F889 |                  PRINT air                  
+6F2 F85A |                  PRINT newLine              
+6F3 9710 |                  JUMP endifG               / AIR -  lose & jump to end
+6F4 11AC |  elseifG8        LOAD p2Choice              
+6F5 41B9 |                  SUBT nine                  
+6F6 8400 |                  SKIPCOND 400              / CHECKING WATER
+6F7 96FE |                  JUMP elseifG9              
+6F8 F8A5 |  thenG9          PRINT player2              
+6F9 F7F3 |                  PRINT chose               / player1 chose gun player2 chose WATER
+6FA F85A |                  PRINT newLine              
+6FB F88D |                  PRINT water                
+6FC F85A |                  PRINT newLine              
+6FD 9710 |                  JUMP endifG               / WATER -  lose & jump to end
+6FE 11AC |  elseifG9        LOAD p2Choice              
+6FF 41BA |                  SUBT ten                   
+700 8400 |                  SKIPCOND 400              / CHECKING DEVIL
+701 9708 |                  JUMP elseifGT              
+702 F8A5 |  thenG10         PRINT player2              
+703 F7F3 |                  PRINT chose               / player1 chose gun player2 chose DEVIL
+704 F85A |                  PRINT newLine              
+705 F899 |                  PRINT gun                  
+706 F85A |                  PRINT newLine              
+707 9710 |                  JUMP endifG               / DEVIL -  win & jump to end
+708 F8A5 |  elseifGT        PRINT player2             / ELSE - gun CHOSEN
+709 F7F3 |                  PRINT chose                
+70A F85A |                  PRINT newLine             / player1 chose gun player2 chose gun
+70B F899 |                  PRINT gun                  
+70C F85A |                  PRINT newLine              
+70D 11AF |                  LOAD p1Win                 
+70E 41B1 |                  SUBT one                   
+70F 21AF |                  STORE p1Win               / tie 
+710 9180 |  endifG          JUMP resume                
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========================================================
+         |                                            / Following Text for:
+         |                                            /	title and prompts
+         |                                            / ========================================================
+         |                                            
+711 0052 |  title           DEC 082                   / R
+712 006F |                  DEC 111                   / o
+713 0063 |                  DEC 099                   / c
+714 006B |                  DEC 107                   / k
+715 002D |                  DEC 045                   / -
+716 0050 |                  DEC 080                   / P
+717 0061 |                  DEC 097                   / a
+718 0070 |                  DEC 112                   / p
+719 0065 |                  DEC 101                   / e
+71A 0072 |                  DEC 114                   / r
+71B 002D |                  DEC 045                   / -
+71C 000D |                  DEC 013                   / [return]
+71D 0053 |                  DEC 083                   / S
+71E 0063 |                  DEC 099                   / c
+71F 0069 |                  DEC 105                   / i
+720 0073 |                  DEC 115                   / s
+721 0073 |                  DEC 115                   / s
+722 006F |                  DEC 111                   / o
+723 0072 |                  DEC 114                   / r
+724 0073 |                  DEC 115                   / s
+725 002D |                  DEC 045                   / -
+726 000D |                  DEC 013                   / [return]
+727 004C |                  DEC 076                   / L
+728 0069 |                  DEC 105                   / i
+729 007A |                  DEC 122                   / z
+72A 0061 |                  DEC 097                   / a
+72B 0072 |                  DEC 114                   / r
+72C 0064 |                  DEC 100                   / d
+72D 002D |                  DEC 045                   / -
+72E 0053 |                  DEC 083                   / S
+72F 0070 |                  DEC 112                   / p
+730 006F |                  DEC 111                   / o
+731 0063 |                  DEC 099                   / c
+732 006B |                  DEC 107                   / k
+733 0021 |                  DEC 033                   / !
+734 000D |                  DEC 013                   / [return]
+735 000D |                  DEC 013                   / [return]
+736 0000 |                  DEC 000                    
+         |                                            
+737 002C |  inputPromptText DEC 044                   / ,
+738 0020 |                  DEC 032                   / [space]
+739 0045 |                  DEC 069                   / E
+73A 006E |                  DEC 110                   / n
+73B 0074 |                  DEC 116                   / t
+73C 0065 |                  DEC 101                   / e
+73D 0072 |                  DEC 114                   / r
+73E 005F |                  DEC 095                   / _
+73F 0061 |                  DEC 097                   / a
+740 000D |                  DEC 013                   / [return]
+741 006E |                  DEC 110                   / n
+742 0075 |                  DEC 117                   / u
+743 006D |                  DEC 109                   / m
+744 0062 |                  DEC 098                   / b
+745 0065 |                  DEC 101                   / e
+746 0072 |                  DEC 114                   / r
+747 005F |                  DEC 095                   / _
+748 0066 |                  DEC 102                   / f
+749 0072 |                  DEC 114                   / r
+74A 006F |                  DEC 111                   / o
+74B 006D |                  DEC 109                   / m
+74C 000D |                  DEC 013                   / [return]
+74D 0074 |                  DEC 116                   / t
+74E 0068 |                  DEC 104                   / h
+74F 0065 |                  DEC 101                   / e
+750 005F |                  DEC 095                   / _
+751 0066 |                  DEC 102                   / f
+752 006F |                  DEC 111                   / o
+753 006C |                  DEC 108                   / l
+754 006C |                  DEC 108                   / l
+755 006F |                  DEC 111                   / o
+756 0077 |                  DEC 119                   / w
+757 0069 |                  DEC 105                   / i
+758 006E |                  DEC 110                   / n
+759 0067 |                  DEC 103                   / g
+75A 003A |                  DEC 058                   / :
+75B 000D |                  DEC 013                   / [return]
+75C 0020 |                  DEC 032                   / [space]
+75D 0020 |                  DEC 032                   / [space]
+75E 005B |                  DEC 091                   / [
+75F 0031 |                  DEC 049                   / 1
+760 005D |                  DEC 093                   / ]
+761 0020 |                  DEC 032                   / [space]
+762 002D |                  DEC 045                   / -
+763 0020 |                  DEC 032                   / [space]
+764 0052 |                  DEC 082                   / R
+765 006F |                  DEC 111                   / o
+766 0063 |                  DEC 099                   / c
+767 006B |                  DEC 107                   / k
+768 000D |                  DEC 013                   / [return]
+769 0020 |                  DEC 032                   / [space]
+76A 0020 |                  DEC 032                   / [space]
+76B 005B |                  DEC 091                   / [
+76C 0032 |                  DEC 050                   / 2
+76D 005D |                  DEC 093                   / ]
+76E 0020 |                  DEC 032                   / [space]
+76F 002D |                  DEC 045                   / -
+770 0020 |                  DEC 032                   / [space]
+771 0050 |                  DEC 080                   / P
+772 0061 |                  DEC 097                   / a
+773 0070 |                  DEC 112                   / p
+774 0065 |                  DEC 101                   / e
+775 0072 |                  DEC 114                   / r
+776 000D |                  DEC 013                   / [return]
+777 0020 |                  DEC 032                   / [space]
+778 0020 |                  DEC 032                   / [space]
+779 005B |                  DEC 091                   / [
+77A 0033 |                  DEC 051                   / 3
+77B 005D |                  DEC 093                   / ]
+77C 0020 |                  DEC 032                   / [space]
+77D 002D |                  DEC 045                   / -
+77E 0020 |                  DEC 032                   / [space]
+77F 0053 |                  DEC 083                   / S
+780 0063 |                  DEC 099                   / c
+781 0069 |                  DEC 105                   / i
+782 0073 |                  DEC 115                   / s
+783 0073 |                  DEC 115                   / s
+784 006F |                  DEC 111                   / o
+785 0072 |                  DEC 114                   / r
+786 0073 |                  DEC 115                   / s
+787 000D |                  DEC 013                   / [return]
+788 005B |                  DEC 091                   / [
+789 0034 |                  DEC 052                   / 4
+78A 005D |                  DEC 093                   / ]
+78B 002D |                  DEC 045                   / -
+78C 0046 |                  DEC 070                   / F
+78D 0069 |                  DEC 105                   / i
+78E 0072 |                  DEC 114                   / r
+78F 0065 |                  DEC 101                   / e
+790 000D |                  DEC 013                   / [return]
+791 005B |                  DEC 091                   / [
+792 0035 |                  DEC 053                   / 5
+793 005D |                  DEC 093                   / ]
+794 002D |                  DEC 045                   / -
+795 0048 |                  DEC 072                   / H
+796 0075 |                  DEC 117                   / u
+797 006D |                  DEC 109                   / m
+798 0061 |                  DEC 097                   / a
+799 006E |                  DEC 110                   / n
+79A 000D |                  DEC 013                   / [return]
+79B 005B |                  DEC 091                   / [
+79C 0036 |                  DEC 054                   / 6
+79D 005D |                  DEC 093                   / ]
+79E 002D |                  DEC 045                   / -
+79F 0057 |                  DEC 087                   / W
+7A0 006F |                  DEC 111                   / o
+7A1 006C |                  DEC 108                   / l
+7A2 0066 |                  DEC 102                   / f
+7A3 000D |                  DEC 013                   / [return]
+7A4 005B |                  DEC 091                   / [
+7A5 0037 |                  DEC 055                   / 7
+7A6 005D |                  DEC 093                   / ]
+7A7 002D |                  DEC 045                   / -
+7A8 0053 |                  DEC 083                   / S
+7A9 0070 |                  DEC 112                   / p
+7AA 006F |                  DEC 111                   / o
+7AB 006E |                  DEC 110                   / n
+7AC 0067 |                  DEC 103                   / g
+7AD 0065 |                  DEC 101                   / e
+7AE 000D |                  DEC 013                   / [return]
+7AF 005B |                  DEC 091                   / [
+7B0 0038 |                  DEC 056                   / 8
+7B1 005D |                  DEC 093                   / ]
+7B2 002D |                  DEC 045                   / -
+7B3 0041 |                  DEC 065                   / A
+7B4 0069 |                  DEC 105                   / i
+7B5 0072 |                  DEC 114                   / r
+7B6 000D |                  DEC 013                   / [return]
+7B7 005B |                  DEC 091                   / [
+7B8 0039 |                  DEC 057                   / 9
+7B9 005D |                  DEC 093                   / ]
+7BA 002D |                  DEC 045                   / -
+7BB 0057 |                  DEC 087                   / W
+7BC 0061 |                  DEC 097                   / a
+7BD 0074 |                  DEC 116                   / t
+7BE 0065 |                  DEC 101                   / e
+7BF 0072 |                  DEC 114                   / r
+7C0 000D |                  DEC 013                   / [return]
+7C1 005B |                  DEC 091                   / [
+7C2 0031 |                  DEC 049                   / 1
+7C3 0030 |                  DEC 048                   / 0
+7C4 005D |                  DEC 093                   / ]
+7C5 002D |                  DEC 045                   / -
+7C6 0044 |                  DEC 068                   / D
+7C7 0065 |                  DEC 101                   / e
+7C8 0076 |                  DEC 118                   / v
+7C9 0069 |                  DEC 105                   / i
+7CA 006C |                  DEC 108                   / l
+7CB 000D |                  DEC 013                   / [return]
+7CC 005B |                  DEC 091                   / [
+7CD 0031 |                  DEC 049                   / 1
+7CE 0031 |                  DEC 049                   / 1
+7CF 005D |                  DEC 093                   / ]
+7D0 002D |                  DEC 045                   / -
+7D1 0047 |                  DEC 071                   / G
+7D2 0075 |                  DEC 117                   / u
+7D3 006E |                  DEC 110                   / n
+7D4 000D |                  DEC 013                   / [return]
+7D5 000D |                  DEC 013                   / [return]
+7D6 0000 |                  DEC 000                   / [null]
+         |                                            		 
+         |                                            
+         |                                            
+7D7 0050 |  playAgain       DEC 80                    / P
+7D8 006C |                  DEC 108                   / l
+7D9 0061 |                  DEC 097                   / a
+7DA 0079 |                  DEC 121                   / y
+7DB 005F |                  DEC 095                   / _
+7DC 0041 |                  DEC 065                   / A
+7DD 0067 |                  DEC 103                   / g
+7DE 0061 |                  DEC 097                   / a
+7DF 0069 |                  DEC 105                   / i
+7E0 006E |                  DEC 110                   / n
+7E1 003F |                  DEC 063                   / ?
+7E2 000D |                  DEC 013                   / [return]
+7E3 005B |                  DEC 091                   / [
+7E4 0030 |                  DEC 048                   / 0
+7E5 005D |                  DEC 093                   / ]
+7E6 002D |                  DEC 045                   / -
+7E7 004E |                  DEC 078                   / N
+7E8 006F |                  DEC 111                   / o
+7E9 000D |                  DEC 013                   / [return]
+7EA 005B |                  DEC 091                   / [
+7EB 0031 |                  DEC 049                   / 1
+7EC 005D |                  DEC 093                   / ]
+7ED 002D |                  DEC 045                   / -
+7EE 0059 |                  DEC 089                   / Y
+7EF 0065 |                  DEC 101                   / e
+7F0 0073 |                  DEC 115                   / s
+7F1 000D |                  DEC 013                   / [return]
+7F2 0000 |                  DEC 000                   / [null]
+         |                                            / ========================================================
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========================================================
+         |                                            / Text for:
+         |                                            / 	Player1 chose _____ and Player 2 chose _______
+         |                                            / ========================================================
+7F3 005F |  chose           DEC 095                   / _
+7F4 0063 |                  DEC 099                   / c
+7F5 0068 |                  DEC 104                   / h
+7F6 006F |                  DEC 111                   / o
+7F7 0073 |                  DEC 115                   / s
+7F8 0065 |                  DEC 101                   / e
+7F9 0000 |                  DEC 000                   / [null]
+         |                                            
+7FA 005F |  and             DEC 095                   / _
+7FB 0061 |                  DEC 097                   / a
+7FC 006E |                  DEC 110                   / n
+7FD 0064 |                  DEC 100                   / d
+7FE 0000 |                  DEC 000                   / [null]
+         |                                            / ========================================================
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========================================================
+         |                                            / Following Text for:
+         |                                            /	____ eats _____
+         |                                            /	____ smashes _____
+         |                                            /	      ...
+         |                                            /	      etc.
+         |                                            / ========================================================
+         |                                            
+7FF 0063 |  covers          DEC 099                   / c
+800 006F |                  DEC 111                   / o
+801 0076 |                  DEC 118                   / v
+802 0065 |                  DEC 101                   / e
+803 0072 |                  DEC 114                   / r
+804 0073 |                  DEC 115                   / s
+805 0000 |                  DEC 000                   / [null]
+         |                                            
+806 0064 |  disproves       DEC 100                   / d
+807 0069 |                  DEC 105                   / i
+808 0073 |                  DEC 115                   / s
+809 0070 |                  DEC 112                   / p
+80A 0072 |                  DEC 114                   / r
+80B 006F |                  DEC 111                   / o
+80C 0076 |                  DEC 118                   / v
+80D 0065 |                  DEC 101                   / e
+80E 0073 |                  DEC 115                   / s
+80F 0000 |                  DEC 000                   / [null]
+         |                                            
+810 0065 |  eats            DEC 101                   / e
+811 0061 |                  DEC 097                   / a
+812 0074 |                  DEC 116                   / t
+813 0073 |                  DEC 115                   / s
+814 0000 |                  DEC 000                   / [null]
+         |                                            
+815 0073 |  smashes         DEC 115                   / s
+816 006D |                  DEC 109                   / m
+817 0061 |                  DEC 097                   / a
+818 0073 |                  DEC 115                   / s
+819 0068 |                  DEC 104                   / h
+81A 0065 |                  DEC 101                   / e
+81B 0073 |                  DEC 115                   / s
+81C 0000 |                  DEC 000                   / [null]
+         |                                            
+81D 0064 |  decapitates     DEC 100                   / d
+81E 0065 |                  DEC 101                   / e
+81F 0063 |                  DEC 099                   / c
+820 0061 |                  DEC 097                   / a
+821 0070 |                  DEC 112                   / p
+822 0069 |                  DEC 105                   / i
+823 0074 |                  DEC 116                   / t
+824 0061 |                  DEC 097                   / a
+825 0074 |                  DEC 116                   / t
+826 0065 |                  DEC 101                   / e
+827 0073 |                  DEC 115                   / s
+828 0000 |                  DEC 000                   / [null]
+         |                                            
+829 0063 |  cuts            DEC 099                   / c
+82A 0075 |                  DEC 117                   / u
+82B 0074 |                  DEC 116                   / t
+82C 0073 |                  DEC 115                   / s
+82D 0000 |                  DEC 000                   / [null]
+         |                                            
+82E 0063 |  crushes         DEC 099                   / c
+82F 0072 |                  DEC 114                   / r
+830 0075 |                  DEC 117                   / u
+831 0073 |                  DEC 115                   / s
+832 0068 |                  DEC 104                   / h
+833 0065 |                  DEC 101                   / e
+834 0073 |                  DEC 115                   / s
+835 0000 |                  DEC 000                   / [null]
+         |                                            
+836 0050 |  poisons         DEC 080                   / P
+837 006F |                  DEC 111                   / o
+838 0069 |                  DEC 105                   / i
+839 0073 |                  DEC 115                   / s
+83A 006F |                  DEC 111                   / o
+83B 006E |                  DEC 110                   / n
+83C 0073 |                  DEC 115                   / s
+83D 0000 |                  DEC 000                   / [null]
+         |                                            
+83E 0056 |  vaporizes       DEC 086                   / V
+83F 0061 |                  DEC 097                   / a
+840 0070 |                  DEC 112                   / p
+841 006F |                  DEC 111                   / o
+842 0072 |                  DEC 114                   / r
+843 0069 |                  DEC 105                   / i
+844 007A |                  DEC 122                   / z
+845 0065 |                  DEC 101                   / e
+846 0073 |                  DEC 115                   / s
+847 0000 |                  DEC 000                   / [null]
+         |                                            
+         |                                            / ========================================================
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========================================================
+         |                                            / Following Text for:
+         |                                            /	Winning Text & Tie text & Scores
+         |                                            / ========================================================
+         |                                            
+848 005F |  wins            DEC 095                   / _
+849 0057 |                  DEC 087                   / W
+84A 0069 |                  DEC 105                   / i
+84B 006E |                  DEC 110                   / n
+84C 0073 |                  DEC 115                   / s
+84D 0021 |                  DEC 033                   / !
+84E 0000 |                  DEC 000                   / [null]
+         |                                            
+84F 0054 |  tie             DEC 084                   / T
+850 0069 |                  DEC 105                   / i
+851 0065 |                  DEC 101                   / e
+852 0021 |                  DEC 033                   / !
+853 0000 |                  DEC 000                   / [null]
+         |                                            
+854 0073 |  score           DEC 115                   / s
+855 0063 |                  DEC 099                   / c
+856 006F |                  DEC 111                   / o
+857 0072 |                  DEC 114                   / r
+858 0065 |                  DEC 101                   / e
+859 003A |                  DEC 058                   / :
+         |                                            
+         |                                            / ========================================================
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            
+         |                                            / ========================================================
+         |                                            / Following Text for:
+         |                                            /	general text
+         |                                            / ========================================================
+85A 000D |  newLine         DEC 013                   / [return]
+85B 0000 |                  DEC 000                   / [null]
+         |                                            
+85C 005F |  space           DEC 095                   / [space]
+85D 0000 |                  DEC 000                   / [null]
+         |                                            
+85E 0052 |  rock            DEC 082                   / R
+85F 006F |                  DEC 111                   / o
+860 0063 |                  DEC 099                   / c
+861 006B |                  DEC 107                   / k
+862 0000 |                  DEC 000                   / [null]
+         |                                            
+863 0050 |  paper           DEC 080                   / P
+864 0061 |                  DEC 097                   / a
+865 0070 |                  DEC 112                   / p
+866 0065 |                  DEC 101                   / e
+867 0072 |                  DEC 114                   / r
+868 0000 |                  DEC 000                   / [null]
+         |                                            
+869 0053 |  scissors        DEC 083                   / S
+86A 0063 |                  DEC 099                   / c
+86B 0069 |                  DEC 105                   / i
+86C 0073 |                  DEC 115                   / s
+86D 0073 |                  DEC 115                   / s
+86E 006F |                  DEC 111                   / o
+86F 0072 |                  DEC 114                   / r
+870 0073 |                  DEC 115                   / s
+871 0000 |                  DEC 000                   / [null]
+         |                                            
+872 0057 |  wolf            DEC 087                   / W
+873 006F |                  DEC 111                   / o
+874 006C |                  DEC 108                   / l
+875 0066 |                  DEC 102                   / f
+876 0000 |                  DEC 000                   / [null]
+         |                                            
+877 0048 |  human           DEC 072                   / H
+878 0075 |                  DEC 117                   / u
+879 006D |                  DEC 109                   / m
+87A 0061 |                  DEC 097                   / a
+87B 006E |                  DEC 110                   / n
+87C 0000 |                  DEC 000                   / [null]
+         |                                            
+87D 0046 |  fire            DEC 070                   / F
+87E 0069 |                  DEC 105                   / i
+87F 0072 |                  DEC 114                   / r
+880 0065 |                  DEC 101                   / e
+881 0000 |                  DEC 000                   / [null]
+         |                                            
+882 0053 |  sponge          DEC 083                   / S
+883 0070 |                  DEC 112                   / p
+884 006F |                  DEC 111                   / o
+885 006E |                  DEC 110                   / n
+886 0067 |                  DEC 103                   / g
+887 0065 |                  DEC 101                   / e
+888 0000 |                  DEC 000                   / [null]
+         |                                            
+889 0041 |  air             DEC 065                   / A
+88A 0069 |                  DEC 105                   / i
+88B 0072 |                  DEC 114                   / r
+88C 0000 |                  DEC 000                   / [null]
+         |                                            
+88D 0057 |  water           DEC 087                   / W
+88E 0061 |                  DEC 097                   / a
+88F 0074 |                  DEC 116                   / t
+890 0065 |                  DEC 101                   / e
+891 0072 |                  DEC 114                   / r
+892 0000 |                  DEC 000                   / [null]
+         |                                            
+893 0044 |  devil           DEC 068                   / D
+894 0065 |                  DEC 101                   / e
+895 0076 |                  DEC 118                   / v
+896 0069 |                  DEC 105                   / i
+897 006C |                  DEC 108                   / l
+898 0000 |                  DEC 000                   / [null]
+         |                                             
+899 0047 |  gun             DEC 071                   / G
+89A 0075 |                  DEC 117                   / u
+89B 006E |                  DEC 110                   / n
+89C 0000 |                  DEC 000                   / [null]
+         |                                            
+         |                                            
+         |                                            
+89D 0050 |  player1         DEC 080                   / P
+89E 006C |                  DEC 108                   / l
+89F 0061 |                  DEC 097                   / a
+8A0 0079 |                  DEC 121                   / y
+8A1 0065 |                  DEC 101                   / e
+8A2 0072 |                  DEC 114                   / r
+8A3 0031 |                  DEC 049                   / 1
+8A4 0000 |                  DEC 000                   / [null]
+         |                                            
+8A5 0050 |  player2         DEC 080                   / P
+8A6 006C |                  DEC 108                   / l
+8A7 0061 |                  DEC 097                   / a
+8A8 0079 |                  DEC 121                   / y
+8A9 0065 |                  DEC 101                   / e
+8AA 0072 |                  DEC 114                   / r
+8AB 0032 |                  DEC 050                   / 2
+8AC 0000 |                  DEC 000                   / [null]
+         |                                            / ========================================================
+         |                                            
+         |                                            
+         |                  END                        
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -----------------------------------------------------------
+          Symbol          | Defined | References 
+         -----------------+---------+-------------------------------
+          air             |   889   | 15F, 20F, 27F, 304, 383, 3F9, 
+                          |         | 472, 4EB, 560, 597, 5F3, 672, 
+                          |         | 6F1
+          airCheck        |   521   | 162
+          and             |   7FA   | 113, 11E, 129, 134, 13F, 14A, 
+                          |         | 155, 160, 16B, 176, 17D
+          chose           |   7F3   | 110, 11B, 126, 131, 13C, 147, 
+                          |         | 152, 15D, 168, 173, 17A, 1C2, 
+                          |         | 1CC, 1D9, 1E6, 1F3, 200, 20D, 
+                          |         | 217, 221, 22B, 231, 23E, 24B, 
+                          |         | 255, 25F, 269, 273, 27D, 28A, 
+                          |         | 297, 2A4, 2AD, 2BA, 2C4, 2D1, 
+                          |         | 2DB, 2E8, 2F5, 302, 30F, 319, 
+                          |         | 323, 329, 336, 340, 34D, 35A, 
+                          |         | 367, 374, 381, 38B, 395, 39F, 
+                          |         | 3A5, 3B2, 3BC, 3C9, 3D3, 3DD, 
+                          |         | 3EA, 3F7, 404, 411, 41B, 421, 
+                          |         | 42E, 438, 445, 44F, 459, 463, 
+                          |         | 470, 47D, 48A, 497, 49D, 4AA, 
+                          |         | 4B4, 4C1, 4CB, 4D5, 4DF, 4E9, 
+                          |         | 4F6, 503, 510, 519, 526, 533, 
+                          |         | 53D, 547, 554, 55E, 568, 572, 
+                          |         | 57F, 58C, 595, 5A2, 5AF, 5B9, 
+                          |         | 5C6, 5D3, 5DD, 5E7, 5F1, 5FB, 
+                          |         | 608, 611, 61E, 62B, 635, 642, 
+                          |         | 64F, 65C, 666, 670, 67A, 684, 
+                          |         | 68D, 69A, 6A7, 6B1, 6BE, 6CB, 
+                          |         | 6D8, 6E5, 6EF, 6F9, 703, 709
+          covers          |   7FF   | 
+          crushes         |   82E   | 
+          cuts            |   829   | 
+          decapitates     |   81D   | 
+          devil           |   893   | 175, 223, 299, 31B, 397, 413, 
+                          |         | 48C, 505, 581, 5FD, 65E, 68F
+          devilCheck      |   619   | 178
+          disproves       |   806   | 
+          eats            |   810   | 
+          eight           |   1B8   | 159, 209, 279, 2FE, 37D, 3F3, 
+                          |         | 46C, 4E5, 5ED, 66C, 6EB
+          eleven          |   1BB   | 227, 2A0, 31F, 39B, 417, 493, 
+                          |         | 50C, 588, 604, 680
+          elseif1         |   116   | 10E
+          elseif10        |   179   | 171
+          elseif2         |   121   | 119
+          elseif3         |   12C   | 124
+          elseif4         |   137   | 12F
+          elseif5         |   142   | 13A
+          elseif6         |   14D   | 145
+          elseif7         |   158   | 150
+          elseif8         |   163   | 15B
+          elseif9         |   16E   | 166
+          elseifA1        |   52E   | 524
+          elseifA2        |   538   | 531
+          elseifA3        |   542   | 53B
+          elseifA4        |   54F   | 545
+          elseifA5        |   559   | 552
+          elseifA6        |   563   | 55C
+          elseifA7        |   56D   | 566
+          elseifA8        |   57A   | 570
+          elseifA9        |   587   | 57D
+          elseifAT        |   594   | 58A
+          elseifF1        |   33B   | 334
+          elseifF2        |   348   | 33E
+          elseifF3        |   355   | 34B
+          elseifF4        |   362   | 358
+          elseifF5        |   36F   | 365
+          elseifF6        |   37C   | 372
+          elseifF7        |   386   | 37F
+          elseifF8        |   390   | 389
+          elseifF9        |   39A   | 393
+          elseifFI1       |   189   | 183
+          elseifFI2       |   190   | 18A
+          elseifFT        |   3A4   | 39D
+          elseifG1        |   6A2   | 698
+          elseifG2        |   6AC   | 6A5
+          elseifG3        |   6B9   | 6AF
+          elseifG4        |   6C6   | 6BC
+          elseifG5        |   6D3   | 6C9
+          elseifG6        |   6E0   | 6D6
+          elseifG7        |   6EA   | 6E3
+          elseifG8        |   6F4   | 6ED
+          elseifG9        |   6FE   | 6F7
+          elseifGT        |   708   | 701
+          elseifH1        |   3B7   | 3B0
+          elseifH2        |   3C4   | 3BA
+          elseifH3        |   3CE   | 3C7
+          elseifH4        |   3D8   | 3D1
+          elseifH5        |   3E5   | 3DB
+          elseifH6        |   3F2   | 3E8
+          elseifH7        |   3FF   | 3F5
+          elseifH8        |   40C   | 402
+          elseifH9        |   416   | 40F
+          elseifHT        |   420   | 419
+          elseifP1        |   246   | 23C
+          elseifP2        |   250   | 249
+          elseifP3        |   25A   | 253
+          elseifP4        |   264   | 25D
+          elseifP5        |   26E   | 267
+          elseifP6        |   278   | 271
+          elseifP7        |   285   | 27B
+          elseifP8        |   292   | 288
+          elseifP9        |   29F   | 295
+          elseifPT        |   2AC   | 2A2
+          elseifR1        |   1C7   | 1C0
+          elseifR2        |   1D4   | 1CA
+          elseifR3        |   1E1   | 1D7
+          elseifR4        |   1EE   | 1E4
+          elseifR5        |   1FB   | 1F1
+          elseifR6        |   208   | 1FE
+          elseifR7        |   212   | 20B
+          elseifR8        |   21C   | 215
+          elseifR9        |   226   | 21F
+          elseifRT        |   230   | 229
+          elseifSC1       |   2BF   | 2B8
+          elseifSC2       |   2CC   | 2C2
+          elseifSC3       |   2D6   | 2CF
+          elseifSC4       |   2E3   | 2D9
+          elseifSC5       |   2F0   | 2E6
+          elseifSC6       |   2FD   | 2F3
+          elseifSC7       |   30A   | 300
+          elseifSC8       |   314   | 30D
+          elseifSC9       |   31E   | 317
+          elseifSCT       |   328   | 321
+          elseifSP1       |   4AF   | 4A8
+          elseifSP2       |   4BC   | 4B2
+          elseifSP3       |   4C6   | 4BF
+          elseifSP4       |   4D0   | 4C9
+          elseifSP5       |   4DA   | 4D3
+          elseifSP6       |   4E4   | 4DD
+          elseifSP7       |   4F1   | 4E7
+          elseifSP8       |   4FE   | 4F4
+          elseifSP9       |   50B   | 501
+          elseifSPT       |   518   | 50E
+          elseifWO1       |   433   | 42C
+          elseifWO2       |   440   | 436
+          elseifWO3       |   44A   | 443
+          elseifWO4       |   454   | 44D
+          elseifWO5       |   45E   | 457
+          elseifWO6       |   46B   | 461
+          elseifWO7       |   478   | 46E
+          elseifWO8       |   485   | 47B
+          elseifWO9       |   492   | 488
+          elseifWOT       |   49C   | 495
+          endifA          |   59C   | 52D, 537, 541, 54E, 558, 562, 
+                          |         | 56C, 579, 586, 593
+          endifD          |   694   | 625, 62F, 63C, 649, 656, 660, 
+                          |         | 66A, 674, 67E, 68B
+          endifD1         |   626   | 61C
+          endifD2         |   630   | 629
+          endifD3         |   63D   | 633
+          endifD4         |   64A   | 640
+          endifD5         |   657   | 64D
+          endifD6         |   661   | 65A
+          endifD7         |   66B   | 664
+          endifD8         |   675   | 66E
+          endifD9         |   67F   | 678
+          endifDT         |   68C   | 682
+          endifF          |   3AC   | 33A, 347, 354, 361, 36E, 37B, 
+                          |         | 385, 38F, 399, 3A3
+          endifFI         |   192   | 188, 18F
+          endifG          |   710   | 6A1, 6AB, 6B8, 6C5, 6D2, 6DF, 
+                          |         | 6E9, 6F3, 6FD, 707
+          endifH          |   428   | 3B6, 3C3, 3CD, 3D7, 3E4, 3F1, 
+                          |         | 3FE, 40B, 415, 41F
+          endifP          |   2B4   | 245, 24F, 259, 263, 26D, 277, 
+                          |         | 284, 291, 29E, 2AB
+          endifR          |   238   | 1C6, 1D3, 1E0, 1ED, 1FA, 207, 
+                          |         | 211, 21B, 225, 22F
+          endifSC         |   330   | 2BE, 2CB, 2D5, 2E2, 2EF, 2FC, 
+                          |         | 309, 313, 31D, 327
+          endifSP         |   520   | 4AE, 4BB, 4C5, 4CF, 4D9, 4E3, 
+                          |         | 4F0, 4FD, 50A, 517
+          endifWA         |   618   | 5A9, 5B3, 5C0, 5CD, 5D7, 5E1, 
+                          |         | 5EB, 5F5, 602, 60F
+          endifWA1        |   5AA   | 5A0
+          endifWA2        |   5B4   | 5AD
+          endifWA3        |   5C1   | 5B7
+          endifWA4        |   5CE   | 5C4
+          endifWA5        |   5D8   | 5D1
+          endifWA6        |   5E2   | 5DB
+          endifWA7        |   5EC   | 5E5
+          endifWA8        |   5F6   | 5EF
+          endifWA9        |   603   | 5F9
+          endifWAT        |   610   | 606
+          endifWO         |   4A4   | 432, 43F, 449, 453, 45D, 46A, 
+                          |         | 477, 484, 491, 49B
+          endiftie        |   193   | 191
+          fire            |   87D   | 133, 1DB, 257, 2D3, 3A7, 451, 
+                          |         | 4CD, 549, 5C8, 644, 6C0
+          fireCheck       |   331   | 136
+          five            |   1B5   | 138, 1E2, 25B, 2D7, 356, 455, 
+                          |         | 4D1, 550, 5CF, 64B, 6C7
+          four            |   1B4   | 12D, 1D5, 251, 2CD, 3CF, 44B, 
+                          |         | 4C7, 543, 5C2, 63E, 6BA
+          gun             |   899   | 17C, 22D, 2A6, 325, 3A1, 41D, 
+                          |         | 499, 512, 58E, 60A, 686, 6DA, 
+                          |         | 705, 70B
+          gunCheck        |   695   | 17F
+          human           |   877   | 13E, 1E8, 261, 2DD, 35C, 3D5, 
+                          |         | 423, 45B, 4D7, 556, 5D5, 651, 
+                          |         | 6CD
+          humanCheck      |   3AD   | 141
+          if1             |   10B   | 
+          inputPromptText |   737   | 102, 106
+          loop            |   100   | 199
+          newLine         |   85A   | 111, 114, 11C, 11F, 127, 12A, 
+                          |         | 132, 135, 13D, 140, 148, 14B, 
+                          |         | 153, 156, 15E, 161, 169, 16C, 
+                          |         | 174, 177, 17B, 17E, 180, 193, 
+                          |         | 194, 196, 19A, 1A1, 1A8, 1A9, 
+                          |         | 1C3, 1C5, 1CD, 1CF, 1DA, 1DC, 
+                          |         | 1E7, 1E9, 1F4, 1F6, 201, 203, 
+                          |         | 20E, 210, 218, 21A, 222, 224, 
+                          |         | 22C, 22E, 232, 234, 23F, 241, 
+                          |         | 24C, 24E, 256, 258, 260, 262, 
+                          |         | 26A, 26C, 274, 276, 27E, 280, 
+                          |         | 28B, 28D, 298, 29A, 2A5, 2A7, 
+                          |         | 2AE, 2B0, 2BB, 2BD, 2C5, 2C7, 
+                          |         | 2D2, 2D4, 2DC, 2DE, 2E9, 2EB, 
+                          |         | 2F6, 2F8, 303, 305, 310, 312, 
+                          |         | 31A, 31C, 324, 326, 32A, 32C, 
+                          |         | 337, 339, 341, 343, 34E, 350, 
+                          |         | 35B, 35D, 368, 36A, 375, 377, 
+                          |         | 382, 384, 38C, 38E, 396, 398, 
+                          |         | 3A0, 3A2, 3A6, 3A8, 3B3, 3B5, 
+                          |         | 3BD, 3BF, 3CA, 3CC, 3D4, 3D6, 
+                          |         | 3DE, 3E0, 3EB, 3ED, 3F8, 3FA, 
+                          |         | 405, 407, 412, 414, 41C, 41E, 
+                          |         | 422, 424, 42F, 431, 439, 43B, 
+                          |         | 446, 448, 450, 452, 45A, 45C, 
+                          |         | 464, 466, 471, 473, 47E, 480, 
+                          |         | 48B, 48D, 498, 49A, 49E, 4A0, 
+                          |         | 4AB, 4AD, 4B5, 4B7, 4C2, 4C4, 
+                          |         | 4CC, 4CE, 4D6, 4D8, 4E0, 4E2, 
+                          |         | 4EA, 4EC, 4F7, 4F9, 504, 506, 
+                          |         | 511, 513, 51A, 51C, 527, 529, 
+                          |         | 534, 536, 53E, 540, 548, 54A, 
+                          |         | 555, 557, 55F, 561, 569, 56B, 
+                          |         | 573, 575, 580, 582, 58D, 58F, 
+                          |         | 596, 598, 5A3, 5A5, 5B0, 5B2, 
+                          |         | 5BA, 5BC, 5C7, 5C9, 5D4, 5D6, 
+                          |         | 5DE, 5E0, 5E8, 5EA, 5F2, 5F4, 
+                          |         | 5FC, 5FE, 609, 60B, 612, 614, 
+                          |         | 61F, 621, 62C, 62E, 636, 638, 
+                          |         | 643, 645, 650, 652, 65D, 65F, 
+                          |         | 667, 669, 671, 673, 67B, 67D, 
+                          |         | 685, 687, 68E, 690, 69B, 69D, 
+                          |         | 6A8, 6AA, 6B2, 6B4, 6BF, 6C1, 
+                          |         | 6CC, 6CE, 6D9, 6DB, 6E6, 6E8, 
+                          |         | 6F0, 6F2, 6FA, 6FC, 704, 706, 
+                          |         | 70A, 70C
+          nine            |   1B9   | 164, 213, 286, 30B, 387, 400, 
+                          |         | 479, 4F2, 56E, 676, 6F5
+          one             |   1B1   | 10C, 186, 18D, 1D1, 1DE, 1EB, 
+                          |         | 1F8, 205, 236, 23A, 243, 282, 
+                          |         | 28F, 29C, 2A9, 2B2, 2B6, 2C9, 
+                          |         | 2E0, 2ED, 2FA, 307, 32E, 332, 
+                          |         | 345, 352, 35F, 36C, 379, 3AA, 
+                          |         | 3AE, 3C1, 3E2, 3EF, 3FC, 409, 
+                          |         | 426, 42A, 43D, 468, 475, 482, 
+                          |         | 48F, 4A2, 4A6, 4B9, 4EE, 4FB, 
+                          |         | 508, 515, 51E, 522, 52B, 54C, 
+                          |         | 577, 584, 591, 59A, 59E, 5A7, 
+                          |         | 5BE, 5CB, 600, 60D, 616, 61A, 
+                          |         | 623, 63A, 647, 654, 689, 692, 
+                          |         | 696, 69F, 6B6, 6C3, 6D0, 6DD, 
+                          |         | 70E
+          p1Choice        |   1AB   | 104, 10B, 116, 121, 12C, 137, 
+                          |         | 142, 14D, 158, 163, 16E
+          p1Score         |   1AD   | 185, 187, 19E
+          p1Win           |   1AF   | 10A, 181, 1D0, 1D2, 1DD, 1DF, 
+                          |         | 1EA, 1EC, 1F7, 1F9, 204, 206, 
+                          |         | 235, 237, 242, 244, 281, 283, 
+                          |         | 28E, 290, 29B, 29D, 2A8, 2AA, 
+                          |         | 2B1, 2B3, 2C8, 2CA, 2DF, 2E1, 
+                          |         | 2EC, 2EE, 2F9, 2FB, 306, 308, 
+                          |         | 32D, 32F, 344, 346, 351, 353, 
+                          |         | 35E, 360, 36B, 36D, 378, 37A, 
+                          |         | 3A9, 3AB, 3C0, 3C2, 3E1, 3E3, 
+                          |         | 3EE, 3F0, 3FB, 3FD, 408, 40A, 
+                          |         | 425, 427, 43C, 43E, 467, 469, 
+                          |         | 474, 476, 481, 483, 48E, 490, 
+                          |         | 4A1, 4A3, 4B8, 4BA, 4ED, 4EF, 
+                          |         | 4FA, 4FC, 507, 509, 514, 516, 
+                          |         | 51D, 51F, 52A, 52C, 54B, 54D, 
+                          |         | 576, 578, 583, 585, 590, 592, 
+                          |         | 599, 59B, 5A6, 5A8, 5BD, 5BF, 
+                          |         | 5CA, 5CC, 5FF, 601, 60C, 60E, 
+                          |         | 615, 617, 622, 624, 639, 63B, 
+                          |         | 646, 648, 653, 655, 688, 68A, 
+                          |         | 691, 693, 69E, 6A0, 6B5, 6B7, 
+                          |         | 6C2, 6C4, 6CF, 6D1, 6DC, 6DE, 
+                          |         | 70D, 70F
+          p2Choice        |   1AC   | 108, 1BD, 1C7, 1D4, 1E1, 1EE, 
+                          |         | 1FB, 208, 212, 21C, 226, 239, 
+                          |         | 246, 250, 25A, 264, 26E, 278, 
+                          |         | 285, 292, 29F, 2B5, 2BF, 2CC, 
+                          |         | 2D6, 2E3, 2F0, 2FD, 30A, 314, 
+                          |         | 31E, 331, 33B, 348, 355, 362, 
+                          |         | 36F, 37C, 386, 390, 39A, 3AD, 
+                          |         | 3B7, 3C4, 3CE, 3D8, 3E5, 3F2, 
+                          |         | 3FF, 40C, 416, 429, 433, 440, 
+                          |         | 44A, 454, 45E, 46B, 478, 485, 
+                          |         | 492, 4A5, 4AF, 4BC, 4C6, 4D0, 
+                          |         | 4DA, 4E4, 4F1, 4FE, 50B, 521, 
+                          |         | 52E, 538, 542, 54F, 559, 563, 
+                          |         | 56D, 57A, 587, 59D, 5AA, 5B4, 
+                          |         | 5C1, 5CE, 5D8, 5E2, 5EC, 5F6, 
+                          |         | 603, 619, 626, 630, 63D, 64A, 
+                          |         | 657, 661, 66B, 675, 67F, 695, 
+                          |         | 6A2, 6AC, 6B9, 6C6, 6D3, 6E0, 
+                          |         | 6EA, 6F4, 6FE
+          p2Score         |   1AE   | 18C, 18E, 1A5
+          paper           |   863   | 11D, 1C4, 2AF, 2C6, 342, 3BE, 
+                          |         | 43A, 4B6, 535, 5B1, 62D, 6A9
+          paperCheck      |   239   | 120
+          playAgain       |   7D7   | 195
+          player1         |   89D   | 101, 10F, 11A, 125, 130, 13B, 
+                          |         | 146, 151, 15C, 167, 172, 179, 
+                          |         | 184, 19B
+          player2         |   8A5   | 105, 18B, 1A2, 1C1, 1CB, 1D8, 
+                          |         | 1E5, 1F2, 1FF, 20C, 216, 220, 
+                          |         | 22A, 230, 23D, 24A, 254, 25E, 
+                          |         | 268, 272, 27C, 289, 296, 2A3, 
+                          |         | 2AC, 2B9, 2C3, 2D0, 2DA, 2E7, 
+                          |         | 2F4, 301, 30E, 318, 322, 328, 
+                          |         | 335, 33F, 34C, 359, 366, 373, 
+                          |         | 380, 38A, 394, 39E, 3A4, 3B1, 
+                          |         | 3BB, 3C8, 3D2, 3DC, 3E9, 3F6, 
+                          |         | 403, 410, 41A, 420, 42D, 437, 
+                          |         | 444, 44E, 458, 462, 46F, 47C, 
+                          |         | 489, 496, 49C, 4A9, 4B3, 4C0, 
+                          |         | 4CA, 4D4, 4DE, 4E8, 4F5, 502, 
+                          |         | 50F, 518, 525, 532, 53C, 546, 
+                          |         | 553, 55D, 567, 571, 57E, 58B, 
+                          |         | 594, 5A1, 5AE, 5B8, 5C5, 5D2, 
+                          |         | 5DC, 5E6, 5F0, 5FA, 607, 610, 
+                          |         | 61D, 62A, 634, 641, 64E, 65B, 
+                          |         | 665, 66F, 679, 683, 68C, 699, 
+                          |         | 6A6, 6B0, 6BD, 6CA, 6D7, 6E4, 
+                          |         | 6EE, 6F8, 702, 708
+          poisons         |   836   | 
+          resume          |   180   | 238, 2B4, 330, 3AC, 428, 4A4, 
+                          |         | 520, 59C, 618, 694, 710
+          rock            |   85E   | 112, 233, 240, 2BC, 338, 3B4, 
+                          |         | 430, 4AC, 528, 5A4, 620, 69C
+          rockCheck       |   1BD   | 115
+          scissors        |   869   | 128, 1CE, 24D, 32B, 34F, 3CB, 
+                          |         | 447, 4C3, 53F, 5BB, 637, 6B3
+          scissorsCheck   |   2B5   | 12B
+          score           |   854   | 19D, 1A4
+          seven           |   1B7   | 14E, 1FC, 26F, 2F1, 370, 3E6, 
+                          |         | 45F, 564, 5E3, 662, 6E1
+          shift           |   1BC   | 19F, 1A6
+          six             |   1B6   | 143, 1EF, 265, 2E4, 363, 3D9, 
+                          |         | 4DB, 55A, 5D9, 658, 6D4
+          smashes         |   815   | 
+          space           |   85C   | 19C, 1A3
+          sponge          |   882   | 154, 202, 275, 2F7, 376, 3EC, 
+                          |         | 465, 4E1, 51B, 56A, 5E9, 668, 
+                          |         | 6E7
+          spongeCheck     |   4A5   | 157
+          ten             |   1BA   | 16F, 21D, 293, 315, 391, 40D, 
+                          |         | 486, 4FF, 57B, 5F7, 6FF
+          then1           |   10F   | 
+          then10          |   172   | 
+          then2           |   11A   | 
+          then3           |   125   | 
+          then4           |   130   | 
+          then5           |   13B   | 
+          then6           |   146   | 
+          then7           |   151   | 
+          then8           |   15C   | 
+          then9           |   167   | 
+          thenA1          |   525   | 
+          thenA10         |   58B   | 
+          thenA2          |   532   | 
+          thenA3          |   53C   | 
+          thenA4          |   546   | 
+          thenA5          |   553   | 
+          thenA6          |   55D   | 
+          thenA7          |   567   | 
+          thenA8          |   571   | 
+          thenA9          |   57E   | 
+          thenD1          |   61D   | 
+          thenD10         |   683   | 
+          thenD2          |   62A   | 
+          thenD3          |   634   | 
+          thenD4          |   641   | 
+          thenD5          |   64E   | 
+          thenD6          |   65B   | 
+          thenD7          |   665   | 
+          thenD8          |   66F   | 
+          thenD9          |   679   | 
+          thenF1          |   335   | 
+          thenF10         |   39E   | 
+          thenF2          |   33F   | 
+          thenF3          |   34C   | 
+          thenF4          |   359   | 
+          thenF5          |   366   | 
+          thenF6          |   373   | 
+          thenF7          |   380   | 
+          thenF8          |   38A   | 
+          thenF9          |   394   | 
+          thenFI          |   184   | 
+          thenG1          |   699   | 
+          thenG10         |   702   | 
+          thenG2          |   6A6   | 
+          thenG3          |   6B0   | 
+          thenG4          |   6BD   | 
+          thenG5          |   6CA   | 
+          thenG6          |   6D7   | 
+          thenG7          |   6E4   | 
+          thenG8          |   6EE   | 
+          thenG9          |   6F8   | 
+          thenH1          |   3B1   | 
+          thenH10         |   41A   | 
+          thenH2          |   3BB   | 
+          thenH3          |   3C8   | 
+          thenH4          |   3D2   | 
+          thenH5          |   3DC   | 
+          thenH6          |   3E9   | 
+          thenH7          |   3F6   | 
+          thenH8          |   403   | 
+          thenH9          |   410   | 
+          thenP1          |   23D   | 
+          thenP10         |   2A3   | 
+          thenP2          |   24A   | 
+          thenP3          |   254   | 
+          thenP4          |   25E   | 
+          thenP5          |   268   | 
+          thenP6          |   272   | 
+          thenP7          |   27C   | 
+          thenP8          |   289   | 
+          thenP9          |   296   | 
+          thenR1          |   1C1   | 
+          thenR10         |   22A   | 
+          thenR2          |   1CB   | 
+          thenR3          |   1D8   | 
+          thenR4          |   1E5   | 
+          thenR5          |   1F2   | 
+          thenR6          |   1FF   | 
+          thenR7          |   20C   | 
+          thenR8          |   216   | 
+          thenR9          |   220   | 
+          thenSC1         |   2B9   | 
+          thenSC10        |   322   | 
+          thenSC2         |   2C3   | 
+          thenSC3         |   2D0   | 
+          thenSC4         |   2DA   | 
+          thenSC5         |   2E7   | 
+          thenSC6         |   2F4   | 
+          thenSC7         |   301   | 
+          thenSC8         |   30E   | 
+          thenSC9         |   318   | 
+          thenSP1         |   4A9   | 
+          thenSP10        |   50F   | 
+          thenSP2         |   4B3   | 
+          thenSP3         |   4C0   | 
+          thenSP4         |   4CA   | 
+          thenSP5         |   4D4   | 
+          thenSP6         |   4DE   | 
+          thenSP7         |   4E8   | 
+          thenSP8         |   4F5   | 
+          thenSP9         |   502   | 
+          thenWA1         |   5A1   | 
+          thenWA10        |   607   | 
+          thenWA2         |   5AE   | 
+          thenWA3         |   5B8   | 
+          thenWA4         |   5C5   | 
+          thenWA5         |   5D2   | 
+          thenWA6         |   5DC   | 
+          thenWA7         |   5E6   | 
+          thenWA8         |   5F0   | 
+          thenWA9         |   5FA   | 
+          thenWO1         |   42D   | 
+          thenWO10        |   496   | 
+          thenWO2         |   437   | 
+          thenWO3         |   444   | 
+          thenWO4         |   44E   | 
+          thenWO5         |   458   | 
+          thenWO6         |   462   | 
+          thenWO7         |   46F   | 
+          thenWO8         |   47C   | 
+          thenWO9         |   489   | 
+          three           |   1B3   | 122, 1C8, 247, 349, 3C5, 441, 
+                          |         | 4BD, 539, 5B5, 631, 6AD
+          tie             |   84F   | 190
+          title           |   711   | 100
+          two             |   1B2   | 117, 1BE, 2C0, 33C, 3B8, 434, 
+                          |         | 4B0, 52F, 5AB, 627, 6A3
+          vaporizes       |   83E   | 
+          water           |   88D   | 16A, 219, 28C, 311, 38D, 406, 
+                          |         | 47F, 4F8, 574, 5DF, 613, 67C, 
+                          |         | 6FB
+          waterCheck      |   59D   | 16D
+          wins            |   848   | 192
+          wolf            |   872   | 149, 1F5, 26B, 2EA, 369, 3DF, 
+                          |         | 49F
+          wolfCheck       |   429   | 14C
+          zero            |   1B0   | 109
+         -----------------------------------------------------------
+
+

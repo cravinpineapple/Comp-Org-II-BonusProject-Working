@@ -1,0 +1,85 @@
+     Assembly listing for: RPSLS_test.mas
+                Assembled: Sat Dec 05 14:29:36 CST 2020
+
+         |           ORG 100             
+100 F105 |           PRINT title         
+101 F127 |           PRINT player1       
+102 7000 |           HALT                
+         |                              
+         |                              
+103 0000 |  p1Choice DEC 000             
+104 0000 |  p2Choice DEC 000             
+         |                              
+105 0052 |  title    DEC 082            / R
+106 006F |           DEC 111            / o
+107 0063 |           DEC 099            / c
+108 006B |           DEC 107            / k
+109 002D |           DEC 045            / -
+10A 0050 |           DEC 080            / P
+10B 0061 |           DEC 097            / a
+10C 0070 |           DEC 112            / p
+10D 0065 |           DEC 101            / e
+10E 0072 |           DEC 114            / r
+10F 002D |           DEC 045            / -
+110 0053 |           DEC 083            / S
+111 0063 |           DEC 099            / c
+112 0069 |           DEC 105            / i
+113 0073 |           DEC 115            / s
+114 0073 |           DEC 115            / s
+115 006F |           DEC 111            / o
+116 0072 |           DEC 114            / r
+117 0073 |           DEC 115            / s
+118 002D |           DEC 045            / -
+119 004C |           DEC 076            / L
+11A 0069 |           DEC 105            / i
+11B 007A |           DEC 122            / z
+11C 0061 |           DEC 097            / a
+11D 0072 |           DEC 114            / r
+11E 0064 |           DEC 100            / d
+11F 002D |           DEC 045            / -
+120 0053 |           DEC 083            / S
+121 0070 |           DEC 112            / p
+122 006F |           DEC 111            / o
+123 0063 |           DEC 099            / c
+124 006B |           DEC 107            / k
+125 000A |           DEC 010            / [lf]
+126 0000 |           DEC 000             
+         |                              
+127 0130 |  player1  HEX 130             
+128 0050 |           DEC 080            / P
+129 006C |           DEC 108            / l
+12A 0061 |           DEC 097            / a
+12B 0079 |           DEC 121            / y
+12C 0065 |           DEC 101            / e
+12D 0072 |           DEC 114            / r
+12E 0020 |           DEC 032            / [space]
+12F 0031 |           DEC 049            / 1
+130 0000 |           DEC 000            / [null]
+         |                              
+131 013A |  player2  HEX 13A             
+132 0050 |           DEC 080            / P
+133 006C |           DEC 108            / l
+134 0061 |           DEC 097            / a
+135 0079 |           DEC 121            / y
+136 0065 |           DEC 101            / e
+137 0072 |           DEC 114            / r
+138 0020 |           DEC 032            / [space]
+139 0031 |           DEC 049            / 2
+13A 0000 |           DEC 000            / [null]
+         |                              
+         |           END                 
+
+Assembly successful.
+
+         SYMBOL TABLE
+         ----------------------------------------------------
+          Symbol   | Defined | References 
+         ----------+---------+-------------------------------
+          p1Choice |   103   | 
+          p2Choice |   104   | 
+          player1  |   127   | 101
+          player2  |   131   | 
+          title    |   105   | 100
+         ----------------------------------------------------
+
+

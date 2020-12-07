@@ -1,0 +1,25 @@
+LOADI player1
+SKIPCOND 400
+JUMP Outp
+HALT
+
+
+Outp,   OUTPUT
+	ADD One
+	STORE player1
+	JUMP Outp
+
+One, HEX 001
+
+
+player1,	HEX 10B
+		DEC 80  / P
+		DEC 108 / l
+		DEC 87  / a
+		DEC 121 / y
+		DEC 101 / e
+		DEC 114 / r
+		DEC 032 / [space]
+		DEC 49  / 1
+		DEC 000 / acts as our null character to stop message
+END

@@ -1,0 +1,67 @@
+	ORG 100
+	PRINT title
+	PRINT player1
+	HALT
+
+
+p1Choice, DEC 000
+p2Choice, DEC 000
+
+title,  DEC 082 / R
+	DEC 111 / o
+	DEC 099 / c
+	DEC 107 / k
+	DEC 045 / -
+	DEC 080 / P
+	DEC 097 / a
+	DEC 112 / p
+	DEC 101 / e
+	DEC 114 / r
+	DEC 045 / -
+	DEC 083 / S
+	DEC 099 / c
+	DEC 105 / i
+	DEC 115 / s
+	DEC 115 / s
+	DEC 111 / o
+	DEC 114 / r
+	DEC 115 / s
+	DEC 045 / -
+	DEC 076 / L
+	DEC 105 / i
+	DEC 122 / z
+	DEC 097 / a
+	DEC 114 / r
+	DEC 100 / d
+	DEC 045 / -
+	DEC 083 / S
+	DEC 112 / p
+	DEC 111 / o
+	DEC 099 / c
+	DEC 107 / k
+	DEC 010 / [lf]
+	DEC 000 - [null]
+
+player1, HEX 130
+ 	DEC 080 / P
+ 	DEC 108 / l
+ 	DEC 097 / a
+ 	DEC 121 / y
+ 	DEC 101 / e
+ 	DEC 114 / r
+ 	DEC 032 / [space]
+ 	DEC 049 / 1
+ 	DEC 000 / [null]
+
+player2, HEX 13A
+ 	DEC 080 / P
+ 	DEC 108 / l
+ 	DEC 097 / a
+ 	DEC 121 / y
+ 	DEC 101 / e
+ 	DEC 114 / r
+ 	DEC 032 / [space]
+ 	DEC 049 / 2
+ 	DEC 000 / [null]
+
+END

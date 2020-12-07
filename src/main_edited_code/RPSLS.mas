@@ -1,0 +1,2162 @@
+	ORG 100
+loop,   PRINT title		 / printing title, and loop for repeated play
+	PRINT player1               / Next 2 lines prompt player 1 for input
+	PRINT inputPromptText
+	INPUT		       / Next 2 lines take & store player1's choice
+	STORE p1Choice
+	PRINT player2
+	PRINT inputPromptText       / Next 2 lines prompt player 2 for input
+	INPUT
+	STORE p2Choice	      / Next 2 lines take & store player2's choice
+
+	LOAD zero
+	STORE p1Win 	/ clearing previous game data from p1Win
+
+	/ temp hard coded variables for testing
+	/ LOAD one
+	/ store p1Choice
+	/ LOAD five
+	/ store p2Choice
+
+
+/ conditionals to check if user is:
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+if1,      LOAD p1Choice
+ 	  SUBT one
+  	  SKIPCOND 400	/ if choice is 1
+  	  JUMP elseif1
+then1,    PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT rock
+	  PRINT and
+	  PRINT newLine
+	  JUMP rockCheck	/ then go to rock check
+elseif1,  LOAD p1Choice	 / other wise,
+	  SUBT two	      
+	  SKIPCOND 400	/if choice is 2
+	  JUMP elseif2
+then2,    PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT paper
+	  PRINT and
+	  PRINT newLine
+ 	  JUMP paperCheck	/ then go to paper check
+elseif2,  LOAD p1Choice	  / otherwise,
+	  SUBT three
+	  SKIPCOND 400	/if choice is 3
+	  JUMP elseif3
+then3,    PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT scissors
+	  PRINT and
+	  PRINT newLine
+	  JUMP scissorsCheck	/ then go to scissors check
+elseif3,  LOAD p1Choice	  / otherwise,
+	  SUBT four
+	  SKIPCOND 400	/if choice is 4
+	  JUMP elseif4
+then4,    PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT fire
+	  PRINT and
+	  PRINT newLine
+	  JUMP fireCheck	/ then go to fire check
+elseif4,  load p1Choice
+	  SUBT five
+	  SKIPCOND 400
+	  JUMP elseif5
+then5,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT human
+	  PRINT and
+	  PRINT newLine
+	  JUMP humanCheck	/ then go to human check
+elseif5,  load p1Choice
+	  SUBT six
+	  SKIPCOND 400
+	  JUMP elseif6
+then6,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT wolf
+	  PRINT and
+	  PRINT newLine
+	  JUMP wolfCheck	/ then go to wolf check
+elseif6,  load p1Choice
+	  SUBT seven
+	  SKIPCOND 400
+	  JUMP elseif7
+then7,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT sponge
+	  PRINT and
+	  PRINT newLine
+	  JUMP spongeCheck	/ then go to sponge check
+elseif7,  load p1Choice
+	  SUBT eight
+	  SKIPCOND 400
+	  JUMP elseif8
+then8,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT air
+	  PRINT and
+	  PRINT newLine
+	  JUMP airCheck		/ then go to air check
+elseif8,  load p1Choice
+	  SUBT nine
+	  SKIPCOND 400
+	  JUMP elseif9
+then9,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT water
+	  PRINT and
+	  PRINT newLine
+	  JUMP waterCheck	/ then go to water check
+elseif9,  LOAD p1Choice
+	  SUBT ten
+	  SKIPCOND 400
+	  JUMP elseif10
+then10,	  PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT devil
+	  PRINT and
+ 	  PRINT newLine
+ 	  JUMP devilCheck	/ then go to devil check
+elseif10, PRINT player1
+	  PRINT chose
+	  PRINT newLine
+	  PRINT gun
+	  PRINT and
+	  PRINT newLine
+	  JUMP gunCheck		/ then go to gun check
+
+
+
+	
+resume,    PRINT newLine
+           LOAD p1Win
+   	   SKIPCOND 800
+   	   JUMP elseifFI1
+thenFI,     PRINT player1	/ if player 1 won
+	   LOAD p1Score
+	   ADD one
+	   STORE p1Score
+   	   JUMP endifFI
+elseifFI1, SKIPCOND 400
+   	   JUMP elseifFI2
+	   PRINT player2	/ if player 2 won
+	   LOAD p2Score
+	   ADD one
+	   STORE p2Score
+   	   JUMP endifFI
+elseifFI2, PRINT tie
+	   JUMP endiftie	/ if tie got to end
+endifFI,   PRINT wins	   
+endiftie,  PRINT newLine
+	   PRINT newLine
+	   PRINT playAgain	/ ask if players want to play again
+	   PRINT newLine
+	   INPUT
+	   SKIPCOND 400	/ if players do, loop through again. if not, end program
+	   JUMP loop
+
+
+	PRINT newLine
+	PRINT player1
+	PRINT space	/ printing display text for p1's score
+	PRINT score
+	LOAD p1Score
+	ADD shift		/ shifting p1's score to their score's ASCII value
+	OUTPUT
+	PRINT newLine
+	PRINT player2
+	PRINT space 	/ printing display text for p2's score
+	PRINT score
+	LOAD p2Score
+	ADD shift		/ shifting p2's score to their score's ASCII value
+	OUTPUT
+	PRINT newLine
+	PRINT newLine
+	HALT
+
+
+
+
+p1Choice, DEC 000	/ for holding player 1's choice
+p2Choice, DEC 000	/ for holding player 2's choice
+
+p1Score,  DEC 000	/ for holding player 1's score
+p2Score,  DEC 000	/ for holding player 2's score
+
+p1Win, DEC 000	/ status of win or loss for player 1
+
+zero,   DEC 000
+one,    DEC 001
+two,    DEC 002
+three,  DEC 003
+four,   DEC 004
+five,   DEC 005
+six,    DEC 006
+seven,  DEC 007
+eight,  DEC 008
+nine,   DEC 009
+ten,    DEC 010
+eleven, DEC 011
+shift,  DEC 048 	/ value to shift score's to their score in ASCII
+
+
+
+
+
+
+
+/ ========== ROCK CHECK =============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+rockCheck,      LOAD p2Choice
+		SUBT two
+		SKIPCOND 400 	/ checking if paper
+		JUMP elseifR1
+thenR1,	 PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose rock player2 chose paper
+		PRINT paper
+		PRINT newLine
+		JUMP endifR	/ if paper, do not mark counter & jump to end
+elseifR1,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400	/ checking if scissors
+		JUMP elseifR2
+thenR2,	        PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT scissors	/ player1 chose rock player2 chose scissors
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ if scissors, mark win counter & jump to end
+		JUMP endifR
+elseifR2,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400 	/ CHECKING FIRE
+		JUMP elseifR3
+thenR3,	        PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose rock player2 chose fire
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ FIRE -  win & jump to end
+		JUMP endifR
+elseifR3,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifR4
+thenR4,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ HUMAN -  win & jump to end
+		JUMP endifR
+elseifR4,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifR5
+thenR5,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose wolf
+		PRINT newLine
+		PRINT wolf
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ HUMAN -  win & jump to end
+		JUMP endifR
+elseifR5,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifR6
+thenR6,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ SPONGE -  win & jump to end
+		JUMP endifR
+elseifR6,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifR7
+thenR7,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		JUMP endifR	/ AIR -  lose & jump to end
+elseifR7,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifR8
+thenR8,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		JUMP endifR   / WATER -  lose & jump to end
+elseifR8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifR9
+thenR9,	        PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		JUMP endifR	/ DEVIL -  lose & jump to end
+elseifR9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifRT
+thenR10,	PRINT player2
+		PRINT chose	/ player1 chose rock player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine	
+		JUMP endifR	/ GUN -  lose & jump to end
+elseifRT,       PRINT player2   / ELSE - ROCK CHOSEN
+		PRINT chose	/ player1 chose rock player2 chose rock
+		PRINT newLine
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifR, 	JUMP resume
+
+/ =============== PAPER CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+paperCheck,     LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifP1
+thenP1,	        PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose paper player2 chose rock
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ ROCK -  win & jump to end
+		JUMP endifP
+elseifP1,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400	/ checking if scissors
+		JUMP elseifP2
+thenP2,	        PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT scissors	/ player1 chose paper player2 chose scissors
+		PRINT newLine
+		JUMP endifP     / SCISSORS - lose & jump to end
+elseifP2,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400 	/ CHECKING FIRE
+		JUMP elseifP3
+thenP3,	        PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose paper player2 chose fire
+		PRINT fire
+		PRINT newLine
+		JUMP endifP    / FIRE -  lose & jump to end
+elseifP3,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifP4
+thenP4,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifP 	/ HUMAN -  lose & jump to end
+elseifP4,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifP5
+thenP5,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose wolf
+		PRINT newLine
+		PRINT wolf
+		PRINT newLine
+		JUMP endifP	/ WOLF -  lose & jump to end
+elseifP5,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifP6
+thenP6,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifP	/ SPONGE -  lose & jump to end
+elseifP6,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifP7
+thenP7,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ AIR -  win & jump to end
+		JUMP endifP
+elseifP7,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifP8
+thenP8,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ WATER -  win & jump to end
+		JUMP endifP
+elseifP8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifP9
+thenP9,	        PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ DEVIL -  win & jump to end
+		JUMP endifP
+elseifP9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifPT
+thenP10,	PRINT player2
+		PRINT chose	/ player1 chose paper player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ GUN -  win & jump to end
+		JUMP endifP
+elseifPT,       PRINT player2   / ELSE - PAPER CHOSEN
+		PRINT chose	/ player1 chose paper player2 chose rock
+		PRINT newLine
+		PRINT paper
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifP, 	JUMP resume
+
+/ =============== scissors CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+scissorsCheck,  LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifSC1
+thenSC1,	PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose paper player2 chose rock
+		PRINT rock
+		PRINT newLine
+		JUMP endifSC	/ ROCK -  LOSE & jump to end
+elseifSC1,      LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifSC2
+thenSC2,	PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose scissors player2 chose paper
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSC     / SCISSORS - WIN & jump to end
+elseifSC2,      LOAD p2Choice
+		SUBT four
+		SKIPCOND 400 	/ CHECKING FIRE
+		JUMP elseifSC3
+thenSC3,	PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose scissors player2 chose fire
+		PRINT fire
+		PRINT newLine
+		JUMP endifSC    / FIRE -  lose & jump to end
+elseifSC3,      LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifSC4
+thenSC4,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSC 	/ HUMAN -  win & jump to end
+elseifSC4,      LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifSC5
+thenSC5,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose wolf
+		PRINT newLine
+		PRINT wolf
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSC	/ WOLF -  win & jump to end
+elseifSC5,      LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifSC6
+thenSC6,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSC	/ SPONGE -  win & jump to end
+elseifSC6,      LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifSC7
+thenSC7,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ AIR -  win & jump to end
+		JUMP endifSC
+elseifSC7,      LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifSC8
+thenSC8,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		JUMP endifSC	/ WATER -  lose & jump to end
+elseifSC8,      LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifSC9
+thenSC9,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		JUMP endifSC	/ DEVIL -  lose & jump to end
+elseifSC9,      LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifSCT
+thenSC10,	PRINT player2
+		PRINT chose	/ player1 chose scissors player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine		
+		JUMP endifSC	/ GUN -  lose & jump to end
+elseifSCT,      PRINT player2   / ELSE - scissors CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose scissors player2 chose scissors
+		PRINT scissors	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifSC, 	JUMP resume
+
+/ ========== fire CHECK =============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+fireCheck,      LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifF1
+thenF1,	        PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose fire player2 chose rock
+		PRINT rock
+		PRINT newLine
+		JUMP endifF	/ ROCK - lose & jump to end
+elseifF1,       LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifF2
+thenF2,	        PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose fire player2 chose paper
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ PAPER - win & jump to end
+		JUMP endifF
+elseifF2,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING scissors
+		JUMP elseifF3
+thenF3,	        PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose fire player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ SCISSORS -  win & jump to end
+		JUMP endifF
+elseifF3,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifF4
+thenF4,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ HUMAN -  win & jump to end
+		JUMP endifF
+elseifF4,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifF5
+thenF5,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose wolf
+		PRINT newLine
+		PRINT wolf
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ WOLF -  win & jump to end
+		JUMP endifF
+elseifF5,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifF6
+thenF6,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ SPONGE -  win & jump to end
+		JUMP endifF
+elseifF6,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifF7
+thenF7,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		JUMP endifF	/ AIR -  lose & jump to end
+elseifF7,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifF8
+thenF8,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		JUMP endifF   / WATER -  lose & jump to end
+elseifF8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifF9
+thenF9,	        PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		JUMP endifF	/ DEVIL -  lose & jump to end
+elseifF9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifFT
+thenF10,	PRINT player2
+		PRINT chose	/ player1 chose fire player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine	
+		JUMP endifF	/ GUN -  lose & jump to end
+elseifFT,       PRINT player2   / ELSE - fire CHOSEN
+		PRINT chose	/ player1 chose fire player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifF, 	JUMP resume
+
+
+/ ========== human CHECK =============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+humanCheck,     LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifH1
+thenH1,	        PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose human player2 chose rock
+		PRINT rock
+		PRINT newLine
+		JUMP endifH	/ ROCK - lose & jump to end
+elseifH1,       LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifH2
+thenH2,	        PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose human player2 chose paper
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ PAPER - win & jump to end
+		JUMP endifH
+elseifH2,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING scissors
+		JUMP elseifH3
+thenH3,	        PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose human player2 chose scissors
+		PRINT scissors
+		PRINT newLine	
+		JUMP endifH	/ SCISSORS -  end & jump to end
+elseifH3,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP elseifH4
+thenH4,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose fire
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifH	/ FIRE -  lose & jump to end
+elseifH4,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifH5
+thenH5,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose wolf
+		PRINT newLine
+		PRINT wolf
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ WOLF -  win & jump to end
+		JUMP endifH
+elseifH5,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifH6
+thenH6,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ SPONGE -  win & jump to end
+		JUMP endifH
+elseifH6,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifH7
+thenH7,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	
+		JUMP endifH	/ AIR -  win & jump to end
+elseifH7,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifH8
+thenH8,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win	
+		JUMP endifH   / WATER -  win & jump to end
+elseifH8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifH9
+thenH9,	        PRINT player2
+		PRINT chose	/ player1 chose human player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		JUMP endifH	/ DEVIL -  lose & jump to end
+elseifH9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifHT
+thenH10,	PRINT player2
+		PRINT chose	/ player1 chose human player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine	
+		JUMP endifH	/ GUN -  lose & jump to end
+elseifHT,       PRINT player2   / ELSE - human CHOSEN
+		PRINT chose	/ player1 chose human player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifH, 	JUMP resume
+
+
+
+/ =============== wolf CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+wolfCheck,      LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifWO1
+thenWO1,	PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose wolf player2 chose rock
+		PRINT rock
+		PRINT newLine
+		JUMP endifWO	/ ROCK -  LOSE & jump to end
+elseifWO1,      LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifWO2
+thenWO2,	PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose wolf player2 chose paper
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWO     / PAPER - WIN & jump to end
+elseifWO2,      LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP elseifWO3
+thenWO3,	PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose wolf player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		JUMP endifWO    / SCISSORS -  lose & jump to end
+elseifWO3,      LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP elseifWO4
+thenWO4,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		JUMP endifWO 	/ FIRE -  lose & jump to end
+elseifWO4,      LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifWO5
+thenWO5,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifWO	/ HUMAN -  win & jump to end
+elseifWO5,      LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifWO6
+thenWO6,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWO	/ SPONGE -  win & jump to end
+elseifWO6,      LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifWO7
+thenWO7,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ AIR -  win & jump to end
+		JUMP endifWO
+elseifWO7,      LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifWO8
+thenWO8,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWO	/ WATER -  win & jump to end
+elseifWO8,      LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifWO9
+thenWO9,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWO	/ DEVIL -  win & jump to end
+elseifWO9,      LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifWOT
+thenWO10,	PRINT player2
+		PRINT chose	/ player1 chose wolf player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine		
+		JUMP endifWO	/ GUN -  lose & jump to end
+elseifWOT,      PRINT player2   / ELSE - wolf CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose wolf player2 chose wolf
+		PRINT wolf	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifWO, 	JUMP resume
+
+
+/ =============== sponge CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), sponge(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+spongeCheck,      LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifSP1
+thenSP1,	PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose sponge player2 chose rock
+		PRINT rock
+		PRINT newLine
+		JUMP endifSP	/ ROCK -  lose & jump to end
+elseifSP1,      LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifSP2
+thenSP2,	PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose sponge player2 chose paper
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSP     / PAPER - WIN & jump to end
+elseifSP2,      LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP elseifSP3
+thenSP3,	PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose sponge player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		JUMP endifSP    / SCISSORS -  lose & jump to end
+elseifSP3,      LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP elseifSP4
+thenSP4,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		JUMP endifSP 	/ FIRE -  lose & jump to end
+elseifSP4,      LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifSP5
+thenSP5,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifSP	/ HUMAN -  lose & jump to end
+elseifSP5,      LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifSP6
+thenSP6,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose WOLF
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifSP	/ WOLF -  lose & jump to end
+elseifSP6,      LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifSP7
+thenSP7,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win	/ AIR -  win & jump to end
+		JUMP endifSP
+elseifSP7,      LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifSP8
+thenSP8,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSP	/ WATER -  win & jump to end
+elseifSP8,      LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifSP9
+thenSP9,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSP	/ DEVIL -  win & jump to end
+elseifSP9,      LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifSPT
+thenSP10,	PRINT player2
+		PRINT chose	/ player1 chose sponge player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifSP	/ GUN -  lose & jump to end
+elseifSPT,      PRINT player2   / ELSE - sponge CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose sponge player2 chose sponge
+		PRINT sponge	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifSP, 	JUMP resume
+
+/ =============== air CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+airCheck,       LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifA1
+thenA1,		PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose air player2 chose rock
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifA	/ ROCK -  win & jump to end
+elseifA1,       LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifA2
+thenA2,		PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose air player2 chose paper
+		PRINT newLine
+		JUMP endifA     / PAPER - lose & jump to end
+elseifA2,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP elseifA3
+thenA3,		PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose air player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		JUMP endifA    / SCISSORS -  lose & jump to end
+elseifA3,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP elseifA4
+thenA4,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifA 	/ FIRE -  win & jump to end
+elseifA4,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifA5
+thenA5,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifA	/ HUMAN -  lose & jump to end
+elseifA5,      LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifA6
+thenA6,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose WOLF
+		PRINT newLine
+		PRINT air
+		PRINT newLine
+		JUMP endifA	/ WOLF -  lose & jump to end
+elseifA6,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifA7
+thenA7,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifA	/ SPONGE -  lose & jump to end
+elseifA7,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifA8
+thenA8,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine	
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifA	/ WATER -  win & jump to end
+elseifA8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifA9
+thenA9,		PRINT player2
+		PRINT chose	/ player1 chose air player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifA	/ DEVIL -  win & jump to end
+elseifA9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP elseifAT
+thenA10,	PRINT player2
+		PRINT chose	/ player1 chose air player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifA	/ GUN -  win & jump to end
+elseifAT,       PRINT player2   / ELSE - air CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose air player2 chose air
+		PRINT air	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifA, 	JUMP resume
+
+
+
+/ =============== water CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+waterCheck,     LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP endifWA1
+thenWA1,	PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose water player2 chose rock
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWA	/ ROCK -  win & jump to end
+endifWA1,       LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP endifWA2
+thenWA2,	PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose water player2 chose paper
+		PRINT newLine
+		JUMP endifWA     / PAPER - lose & jump to end
+endifWA2,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP endifWA3
+thenWA3,	PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose water player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWA    / SCISSORS -  win & jump to end
+endifWA3,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP endifWA4
+thenWA4,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWA 	/ FIRE -  win & jump to end
+endifWA4,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP endifWA5
+thenWA5,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		JUMP endifWA	/ HUMAN -  lose & jump to end
+endifWA5,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP endifWA6
+thenWA6,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose WOLF
+		PRINT newLine
+		PRINT water
+		PRINT newLine
+		JUMP endifWA	/ WOLF -  lose & jump to end
+endifWA6,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP endifWA7
+thenWA7,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifWA	/ SPONGE -  lose & jump to end
+endifWA7,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP endifWA8
+thenWA8,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine	
+		JUMP endifWA	/ AIR -  lose & jump to end
+endifWA8,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP endifWA9
+thenWA9,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose DEVIL
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWA	/ DEVIL -  win & jump to end
+endifWA9,       LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP endifWAT
+thenWA10,	PRINT player2
+		PRINT chose	/ player1 chose water player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifWA	/ GUN -  win & jump to end
+endifWAT,       PRINT player2   / ELSE - water CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose water player2 chose water
+		PRINT water	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifWA, 	JUMP resume
+
+
+/ =============== devil CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+devilCheck,     LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP endifD1
+thenD1,		PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose devil player2 chose rock
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifD	/ ROCK -  win & jump to end
+endifD1,        LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP endifD2
+thenD2,		PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose devil player2 chose paper
+		PRINT newLine
+		JUMP endifD     / PAPER - lose & jump to end
+endifD2,        LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP endifD3
+thenD3,		PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose devil player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifD    / SCISSORS -  win & jump to end
+endifD3,        LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP endifD4
+thenD4,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifD 	/ FIRE -  win & jump to end
+endifD4,        LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP endifD5
+thenD5,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifD	/ HUMAN -  lose & jump to end
+endifD5,        LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP endifD6
+thenD6,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose WOLF
+		PRINT newLine
+		PRINT devil
+		PRINT newLine
+		JUMP endifD	/ WOLF -  lose & jump to end
+endifD6,        LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP endifD7
+thenD7,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifD	/ SPONGE -  lose & jump to end
+endifD7,        LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP endifD8
+thenD8,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine	
+		JUMP endifD	/ AIR -  lose & jump to end
+endifD8,        LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP endifD9
+thenD9,		PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine
+		JUMP endifD	/ WATER -  lose & jump to end
+endifD9,        LOAD p2Choice
+		SUBT eleven
+		SKIPCOND 400    / CHECKING GUN
+		JUMP endifDT
+thenD10,	PRINT player2
+		PRINT chose	/ player1 chose devil player2 chose GUN
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifD	/ GUN -  win & jump to end
+endifDT,        PRINT player2   / ELSE - devil CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose devil player2 chose devil
+		PRINT devil	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifD, 	JUMP resume
+
+/ =============== gun CHECK ===============
+/	rock(1), paper(2), scissors(3), fire(4), human(5), wolf(6), SPONGE(7), air(8)
+/	water(9), devil(10), or gun(11)
+
+
+gunCheck,       LOAD p2Choice
+		SUBT one
+		SKIPCOND 400 	/ checking if rock
+		JUMP elseifG1
+thenG1,		PRINT player2
+		PRINT chose
+		PRINT newLine     / player1 chose gun player2 chose rock
+		PRINT rock
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifG	/ ROCK -  win & jump to end
+elseifG1,       LOAD p2Choice
+		SUBT two
+		SKIPCOND 400	/ checking if paper
+		JUMP elseifG2
+thenG2,		PRINT player2
+		PRINT chose
+		PRINT newLine
+		PRINT paper	/ player1 chose gun player2 chose paper
+		PRINT newLine
+		JUMP endifG     / PAPER - lose & jump to end
+elseifG2,       LOAD p2Choice
+		SUBT three
+		SKIPCOND 400 	/ CHECKING SCISSORS
+		JUMP elseifG3
+thenG3,		PRINT player2
+		PRINT chose
+		PRINT newLine	/ player1 chose gun player2 chose scissors
+		PRINT scissors
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifG    / SCISSORS -  win & jump to end
+elseifG3,       LOAD p2Choice
+		SUBT four
+		SKIPCOND 400    / CHECKING FIRE
+		JUMP elseifG4
+thenG4,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose fire
+		PRINT newLine
+		PRINT fire
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifG 	/ FIRE -  win & jump to end
+elseifG4,       LOAD p2Choice
+		SUBT five
+		SKIPCOND 400    / CHECKING HUMAN
+		JUMP elseifG5
+thenG5,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose human
+		PRINT newLine
+		PRINT human
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifG	/ HUMAN -  lose & jump to end
+elseifG5,       LOAD p2Choice
+		SUBT six
+		SKIPCOND 400    / CHECKING WOLF
+		JUMP elseifG6
+thenG6,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose WOLF
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		LOAD p1Win
+		ADD one
+		STORE p1Win
+		JUMP endifG	/ WOLF -  win & jump to end
+elseifG6,       LOAD p2Choice
+		SUBT seven
+		SKIPCOND 400    / CHECKING SPONGE
+		JUMP elseifG7
+thenG7,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose SPONGE
+		PRINT newLine
+		PRINT sponge
+		PRINT newLine
+		JUMP endifG	/ SPONGE -  lose & jump to end
+elseifG7,       LOAD p2Choice
+		SUBT eight
+		SKIPCOND 400    / CHECKING AIR
+		JUMP elseifG8
+thenG8,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose AIR
+		PRINT newLine
+		PRINT air
+		PRINT newLine	
+		JUMP endifG	/ AIR -  lose & jump to end
+elseifG8,       LOAD p2Choice
+		SUBT nine
+		SKIPCOND 400    / CHECKING WATER
+		JUMP elseifG9
+thenG9,		PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose WATER
+		PRINT newLine
+		PRINT water
+		PRINT newLine
+		JUMP endifG	/ WATER -  lose & jump to end
+elseifG9,       LOAD p2Choice
+		SUBT ten
+		SKIPCOND 400    / CHECKING DEVIL
+		JUMP elseifGT
+thenG10,	PRINT player2
+		PRINT chose	/ player1 chose gun player2 chose DEVIL
+		PRINT newLine
+		PRINT gun
+		PRINT newLine
+		JUMP endifG	/ DEVIL -  win & jump to end
+elseifGT,       PRINT player2   / ELSE - gun CHOSEN
+		PRINT chose	
+		PRINT newLine	/ player1 chose gun player2 chose gun
+		PRINT gun	
+		PRINT newLine
+		LOAD p1Win
+		SUBT one
+		STORE p1Win	/ tie 
+endifG, 	JUMP resume
+
+
+
+
+/ ========================================================
+/ Following Text for:
+/	title and prompts
+/ ========================================================
+
+title,  DEC 082 / R
+	DEC 111 / o
+	DEC 099 / c
+	DEC 107 / k
+	DEC 045 / -
+	DEC 080 / P
+	DEC 097 / a
+	DEC 112 / p
+	DEC 101 / e
+	DEC 114 / r
+	DEC 045 / -
+	DEC 013 / [return]
+	DEC 083 / S
+	DEC 099 / c
+	DEC 105 / i
+	DEC 115 / s
+	DEC 115 / s
+	DEC 111 / o
+	DEC 114 / r
+	DEC 115 / s
+	DEC 045 / -
+	DEC 013 / [return]
+	DEC 076 / L
+	DEC 105 / i
+	DEC 122 / z
+	DEC 097 / a
+	DEC 114 / r
+	DEC 100 / d
+	DEC 045 / -
+	DEC 083 / S
+	DEC 112 / p
+	DEC 111 / o
+	DEC 099 / c
+	DEC 107 / k
+	DEC 033 / !
+	DEC 013 / [return]
+	DEC 013 / [return]
+	DEC 000 - [null]
+
+inputPromptText, DEC 044 / ,
+		 DEC 032 / [space]
+		 DEC 069 / E
+		 DEC 110 / n
+		 DEC 116 / t
+		 DEC 101 / e
+		 DEC 114 / r
+		 DEC 095 / _
+		 DEC 097 / a
+	 	 DEC 013 / [return]
+		 DEC 110 / n
+		 DEC 117 / u
+		 DEC 109 / m
+		 DEC 098 / b
+		 DEC 101 / e
+		 DEC 114 / r
+		 DEC 095 / _
+		 DEC 102 / f
+		 DEC 114 / r
+		 DEC 111 / o
+		 DEC 109 / m
+	 	 DEC 013 / [return]
+		 DEC 116 / t
+		 DEC 104 / h
+		 DEC 101 / e
+		 DEC 095 / _
+		 DEC 102 / f
+		 DEC 111 / o
+		 DEC 108 / l
+		 DEC 108 / l
+		 DEC 111 / o
+		 DEC 119 / w
+		 DEC 105 / i
+		 DEC 110 / n
+		 DEC 103 / g
+		 DEC 058 / :
+		 DEC 013 / [return]
+		 DEC 032 / [space]
+		 DEC 032 / [space]
+		 DEC 091 / [
+		 DEC 049 / 1
+		 DEC 093 / ]
+		 DEC 032 / [space]
+		 DEC 045 / -
+		 DEC 032 / [space]
+		 DEC 082 / R
+	 	 DEC 111 / o
+	 	 DEC 099 / c
+	 	 DEC 107 / k
+		 DEC 013 / [return]
+		 DEC 032 / [space]
+		 DEC 032 / [space]
+		 DEC 091 / [
+		 DEC 050 / 2
+		 DEC 093 / ]
+		 DEC 032 / [space]
+		 DEC 045 / -
+		 DEC 032 / [space]
+	 	 DEC 080 / P
+	 	 DEC 097 / a
+	 	 DEC 112 / p
+	 	 DEC 101 / e
+	 	 DEC 114 / r
+		 DEC 013 / [return]
+		 DEC 032 / [space]
+		 DEC 032 / [space]
+		 DEC 091 / [
+		 DEC 051 / 3
+		 DEC 093 / ]
+		 DEC 032 / [space]
+		 DEC 045 / -
+		 DEC 032 / [space]
+	 	 DEC 083 / S
+	  	 DEC 099 / c
+		 DEC 105 / i
+	 	 DEC 115 / s
+		 DEC 115 / s
+	 	 DEC 111 / o
+		 DEC 114 / r
+	 	 DEC 115 / s
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 052 / 4
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 070 / F
+		 DEC 105 / i
+		 DEC 114 / r
+		 DEC 101 / e
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 053 / 5
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 072 / H
+		 DEC 117 / u
+		 DEC 109 / m
+		 DEC 097 / a
+		 DEC 110 / n
+		 DEC 013 / [return]
+		 DEC 091 / [
+	 	 DEC 054 / 6
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 087 / W
+		 DEC 111 / o
+ 		 DEC 108 / l
+	 	 DEC 102 / f
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 055 / 7
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 083 / S
+		 DEC 112 / p
+		 DEC 111 / o
+		 DEC 110 / n
+		 DEC 103 / g
+		 DEC 101 / e
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 056 / 8
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 065 / A
+		 DEC 105 / i
+		 DEC 114 / r
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 057 / 9
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 087 / W
+		 DEC 097 / a
+		 DEC 116 / t
+		 DEC 101 / e
+		 DEC 114 / r
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 049 / 1
+		 DEC 048 / 0
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 068 / D
+		 DEC 101 / e
+		 DEC 118 / v
+		 DEC 105 / i
+		 DEC 108 / l
+		 DEC 013 / [return]
+		 DEC 091 / [
+		 DEC 049 / 1
+		 DEC 049 / 1
+		 DEC 093 / ]
+		 DEC 045 / -
+		 DEC 071 / G
+		 DEC 117 / u
+		 DEC 110 / n
+		 DEC 013 / [return]
+	 	 DEC 013 / [return]
+  		 DEC 000 / [null]
+		 
+
+
+playAgain, DEC 80 / P
+	   DEC 108 / l
+	   DEC 097 / a
+	   DEC 121 / y
+	   DEC 095 / _
+	   DEC 065 / A
+	   DEC 103 / g
+	   DEC 097 / a
+	   DEC 105 / i
+	   DEC 110 / n
+	   DEC 063 / ?
+	   DEC 013 / [return]
+	   DEC 091 / [
+	   DEC 048 / 0
+	   DEC 093 / ]
+	   DEC 045 / -
+	   DEC 078 / N
+	   DEC 111 / o
+	   DEC 013 / [return]
+	   DEC 091 / [
+	   DEC 049 / 1
+	   DEC 093 / ]
+	   DEC 045 / -
+	   DEC 089 / Y
+	   DEC 101 / e
+	   DEC 115 / s
+	   DEC 013 / [return]
+	   DEC 000 / [null]
+/ ========================================================
+
+
+
+
+
+/ ========================================================
+/ Text for:
+/ 	Player1 chose _____ and Player 2 chose _______
+/ ========================================================
+chose,          DEC 095 / _
+		DEC 099 / c
+		DEC 104 / h
+		DEC 111 / o
+		DEC 115 / s
+		DEC 101 / e
+		DEC 000 / [null]
+
+and,    DEC 095 / _
+	DEC 097 / a
+	DEC 110 / n
+	DEC 100 / d
+	DEC 000 / [null]
+/ ========================================================
+
+
+
+
+
+
+/ ========================================================
+/ Following Text for:
+/	____ eats _____
+/	____ smashes _____
+/	      ...
+/	      etc.
+/ ========================================================
+
+covers, DEC 099 / c
+	DEC 111 / o
+	DEC 118 / v
+	DEC 101 / e
+	DEC 114 / r
+	DEC 115 / s
+	DEC 000 / [null]
+
+disproves,      DEC 100 / d
+		DEC 105 / i
+		DEC 115 / s
+		DEC 112 / p
+		DEC 114 / r
+		DEC 111 / o
+		DEC 118 / v
+		DEC 101 / e
+		DEC 115 / s
+		DEC 000 / [null]
+
+eats,   DEC 101 / e
+	DEC 097 / a
+	DEC 116 / t
+	DEC 115 / s
+	DEC 000 / [null]
+
+smashes, DEC 115 / s
+	DEC 109 / m
+	DEC 097 / a
+	DEC 115 / s
+	DEC 104 / h
+	DEC 101 / e
+	DEC 115 / s
+	DEC 000 / [null]
+
+decapitates,    DEC 100 / d
+		DEC 101 / e
+		DEC 099 / c
+		DEC 097 / a
+		DEC 112 / p
+		DEC 105 / i
+		DEC 116 / t
+		DEC 097 / a
+		DEC 116 / t
+		DEC 101 / e
+		DEC 115 / s
+		DEC 000 / [null]
+
+cuts,   DEC 099 / c
+	DEC 117 / u
+	DEC 116 / t
+	DEC 115 / s
+	DEC 000 / [null]
+
+crushes, DEC 099 / c
+	DEC 114 / r
+	DEC 117 / u
+	DEC 115 / s
+	DEC 104 / h
+	DEC 101 / e
+	DEC 115 / s
+	DEC 000 / [null]
+
+poisons,	DEC 080 / P
+		DEC 111 / o
+		DEC 105 / i
+		DEC 115 / s
+		DEC 111 / o
+		DEC 110 / n
+		DEC 115 / s
+		DEC 000 / [null]
+
+vaporizes,      DEC 086 / V
+		DEC 097 / a
+		DEC 112 / p
+		DEC 111 / o
+		DEC 114 / r
+		DEC 105 / i
+		DEC 122 / z
+		DEC 101 / e
+		DEC 115 / s
+		DEC 000 / [null]
+
+/ ========================================================
+
+
+
+
+
+
+
+/ ========================================================
+/ Following Text for:
+/	Winning Text & Tie text & Scores
+/ ========================================================
+
+wins,   DEC 095 / _
+	DEC 087 / W
+	DEC 105 / i
+	DEC 110 / n
+	DEC 115 / s
+	DEC 033 / !
+	DEC 000 / [null]
+
+tie,    DEC 084 / T
+	DEC 105 / i
+	DEC 101 / e
+	DEC 033 / !
+	DEC 000 / [null]
+
+score,  DEC 115 / s
+	DEC 099 / c
+	DEC 111 / o
+	DEC 114 / r
+	DEC 101 / e
+	DEC 058 / :
+
+/ ========================================================
+
+
+
+
+
+
+/ ========================================================
+/ Following Text for:
+/	general text
+/ ========================================================
+newLine, DEC 013 / [return]
+	 DEC 000 / [null]
+
+space,  DEC 095 / [space]
+	DEC 000 / [null]
+
+rock,   DEC 082 / R
+	DEC 111 / o
+	DEC 099 / c
+	DEC 107 / k
+	DEC 000 / [null]
+
+paper,   	DEC 080 / P
+	 	DEC 097 / a
+	 	DEC 112 / p
+	 	DEC 101 / e
+	 	DEC 114 / r
+		 DEC 000 / [null]
+
+scissors,	DEC 083 / S
+	 	DEC 099 / c
+		 DEC 105 / i
+	 	DEC 115 / s
+		 DEC 115 / s
+	 	DEC 111 / o
+		 DEC 114 / r
+	 	DEC 115 / s
+		 DEC 000 / [null]
+
+wolf,  		DEC 087 / W
+		DEC 111 / o
+	 	DEC 108 / l
+	 	DEC 102 / f
+		DEC 000 / [null]
+
+human, 	 	 DEC 072 / H
+		 DEC 117 / u
+	    	 DEC 109 / m
+		 DEC 097 / a
+		 DEC 110 / n
+		 DEC 000 / [null]
+
+fire,	DEC 070 / F
+	DEC 105 / i
+	DEC 114 / r
+	DEC 101 / e
+	DEC 000 / [null]
+
+sponge, DEC 083 / S
+	DEC 112 / p
+	DEC 111 / o
+	DEC 110 / n
+	DEC 103 / g
+	DEC 101 / e
+	DEC 000 / [null]
+
+air,    DEC 065 / A
+	DEC 105 / i
+	DEC 114 / r
+	DEC 000 / [null]
+
+water,  DEC 087 / W
+	DEC 097 / a
+	DEC 116 / t
+	DEC 101 / e
+	DEC 114 / r
+	DEC 000 / [null]
+
+devil,  DEC 068 / D
+	DEC 101 / e
+	DEC 118 / v
+	DEC 105 / i
+	DEC 108 / l
+	DEC 000 / [null]
+ 
+gun,    DEC 071 / G
+  	DEC 117 / u
+	DEC 110 / n
+	DEC 000 / [null]
+
+
+
+player1, DEC 080 / P
+ 	DEC 108 / l
+ 	DEC 097 / a
+ 	DEC 121 / y
+ 	DEC 101 / e
+ 	DEC 114 / r
+ 	DEC 049 / 1
+ 	DEC 000 / [null]
+
+player2, DEC 080 / P
+ 	DEC 108 / l
+ 	DEC 097 / a
+ 	DEC 121 / y
+ 	DEC 101 / e
+ 	DEC 114 / r
+ 	DEC 050 / 2
+ 	DEC 000 / [null]
+/ ========================================================
+
+
+END
